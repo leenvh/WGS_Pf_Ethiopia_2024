@@ -3,6 +3,13 @@ import allel
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--zarr")
+parser.add_argument("--position_df")
+
+args = parser.parse_args()
 
 # ---------------------------
 # User parameters
@@ -11,10 +18,10 @@ from tqdm import tqdm
 # Positions file (CSV or TSV)
 # Must contain columns: POS
 # Optional column: CHROM
-positions_file = "positions.csv"
+#positions_file = "positions.csv"
 
 # Default chromosome if CHROM column is missing
-target_chrom = "Pf3D7_01_v3"
+#target_chrom = "Pf3D7_01_v3"
 
 # Annotation dictionary
 # key = (chrom, pos, alt)
@@ -23,15 +30,15 @@ ann = {}  # populate if available
 
 # Zarr path
 zarr_path = (
-    "/mnt/storage13/ahri/popgen_ethiopia_WGS/fst/fst_scikit_allel/072025_pf_mgen_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.zarr"
-)
+   args.zarr
+    )
 
 # ---------------------------
 # Load positions
 # ---------------------------
 print("Loading target positions...")
 #positions_df = pd.read_csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/fst/fst_scikit_allel/hrp_status/genotype_prevalence/gametocyte_relate_high_fst.csv")
-positions_df = pd.read_csv("/mnt/storage13/ahri/WGS/database_v4/annotation/px1_PIN_position.txt",sep="\t") # px1 position
+positions_df = pd.read_csv(args.position_df,sep="\t") # px1 position
 
 if "POS" not in positions_df.columns:
     raise ValueError("Positions file must contain a POS column")
