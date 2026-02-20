@@ -1,0 +1,69 @@
+
+```{r}
+library(dplyr)     # <- spelling was wrong (dplry ❌)
+library(tidyr)
+library(qqman)
+
+
+jostD_result <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hrp2_analysis/pop_stat_jostD/ethopia_by_site_JostD_new.csv.gz")
+
+annotating_file <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps.ann.wide.tsv",sep="\t")
+
+print(colnames(jostD_result))
+print(colnames(annotating_file))
+merging_jostD_ann <- jostD_result %>%
+    left_join(annotating_file,by=c("POS"="pos")) 
+#write.csv(merging_jostD_ann,"/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hrp2_analysis/pop_stat_jostD/ethopia_by_site_JostD_new_annotate.csv")
+
+
+merging_jostD_ann$CHROM <- gsub("Pf3D7_0?(\\d+)_v3", "\\1", merging_jostD_ann$CHROM)
+merging_jostD_ann$CHROM <- as.numeric(merging_jostD_ann$CHROM)
+# Rename columns to match qqman format
+colnames(merging_jostD_ann)[colnames(merging_jostD_ann) == "CHROM"] <- "CHR"
+colnames(merging_jostD_ann)[colnames(merging_jostD_ann) == "POS"]   <- "BP"
+colnames(merging_jostD_ann)[colnames(merging_jostD_ann) == "JostD"]      <- "P"
+#colnames(merging_jostD_ann)[colnames(merging_jostD_ann) == "Gene_name"]     <- "SNP"
+
+class(merging_jostD_ann$JostD)
+
+```
+
+```{r}
+#library(qqman, help, pos = 2, lib.loc = NULL)
+preparing_jostD1 <- jostD_result %>%
+  mutate(merge_pop = paste0(pop1, "vs", pop2)) 
+for (i in unique(preparing_jostD1$merge_pop)){
+  print(i)
+  #print(nrow(filter(preparing_jostD, merge_pop == i)))
+  preparing_jostD <- preparing_jostD1 %>%
+    filter(merge_pop == i) %>%
+    filter(JostD > 0.1) %>% 
+    mutate(SNP = paste("SNP", row_number()))
+
+
+  
+preparing_jostD$CHROM <- gsub("Pf3D7_0?(\\d+)_v3", "\\1", preparing_jostD$CHROM)
+preparing_jostD$CHROM <- as.numeric(preparing_jostD$CHROM)
+# Rename columns to match qqman format
+colnames(preparing_jostD)[colnames(preparing_jostD) == "CHROM"] <- "CHR"
+colnames(preparing_jostD)[colnames(preparing_jostD) == "POS"]   <- "BP"
+colnames(preparing_jostD)[colnames(preparing_jostD) == "JostD"]      <- "P"
+#colnames(preparing_jostD)[colnames(preparing_jostD) == "Gene_name"]     <- "SNP"
+
+preparing_jostD <- na.omit(preparing_jostD[, c("CHR","BP","P","SNP")])
+
+pdf(paste0("//wsl.localhost/Ubuntu-24.04/home/ahri2/Leucodepleted/whole-genome-sequence-analysis/WGS_Pf_Ethiopia_2024/hrp2_status/pop_stat/manhattan_plot_", i, ".pdf"), width = 10, height = 6)
+manhattan(preparing_jostD,
+          chr = "CHR",
+          bp = "BP",
+          p = "P",
+          snp = "SNP",
+          logp = FALSE,
+          ylab = "Jost's D",
+          main = paste0(i, " - Manhattan Plot"))
+dev.off()
+
+}
+
+
+```
