@@ -1,0 +1,17 @@
+```{r}
+library(dplyr)
+library(tidyr)
+
+sample_metadta <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/metadata/sample_meta_with_hrp_status_updated.csv")
+print(colnames(sample_metadta))
+
+ir_metadata <- sample_metadta%>%
+    select(Sample,site,hrp_status)%>%
+    rename("iid"="Sample","group"="hrp_status","fid"="site")
+write.csv(ir_metadata,"/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/isorelate/ir_metadata_hrp_status.csv",row.names=F)
+```
+
+# first change the environment to HaplotypR - conda activate HaplotypR
+```{bash}
+Rscript isorelate_ir.R --vcf /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/ethiopia_vcf/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.vcf.gz  --fws_metadata ../metadata/sample_meta_with_hrp_status_updated.csv --prefix hrp2_status_ --ir_metadata ir_metadata_hrp_status.csv --annotation /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/ethiopia_vcf/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.ann.wide.tsv
+```
