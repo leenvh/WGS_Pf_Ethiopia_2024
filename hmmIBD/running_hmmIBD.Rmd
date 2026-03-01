@@ -1,4 +1,4 @@
-# first activate the ibd conda environment 
+# first activate the ibd conda environment and the directory this code run is /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD
 ```{bash}
 cat hrp_status.txt | xargs -I {} -P 2 sh -c 'Rscript ~/software/malaria-hub/ibd/run_hmmIBD_per_category.R \
 -d /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD/hrp_status \
@@ -35,13 +35,54 @@ Rscript ~/software/malaria-hub/ibd/summary_hmmIBD_results.R \
 ```
 
 ```{r}
+#install.packages(c("rmarkdown", "knitr"))
+#install.packages("reticulate")
+library(rmarkdown, help, pos = 2, lib.loc = NULL)
+library(knitr, help, pos = 2, lib.loc = NULL)
+
 library(dplyr)
 library(tidyr, help, pos = 2, lib.loc = NULL)
+library(data.table)
+library(reticulate, help, pos = 2, lib.loc = NULL)
 
+hmmIBD_frac <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD/hrp_status/01_03_2026_hmmIBD_ibd_win10kb_annotated_q0.95.tsv",sep="\t")
+print(colnames(hmmIBD_frac))
+
+for (i in unique(hmmIBD_frac$category)) {
+
+    subset_df <- hmmIBD_frac %>%
+        dplyr::filter(category == i)
+
+    safe_i <- gsub("[^A-Za-z0-9_]", "_", i)
+
+    write.table(
+        subset_df,
+        file = paste0(safe_i, "_01_03_2026_hmmIBD_ibd_win10kb_annotated_q0.95.tsv"),
+        sep = "\t",
+        row.names = FALSE,
+        quote = FALSE
+    )
+}
 ```
 
 
-```{python}
+```{bash}
+awk 'BEGIN{FS=OFS="\t"} NR>1 {print $1, $2-1, $3}' mutant_01_03_2026_hmmIBD_ibd_win10kb_annotated_q0.95.tsv > mutant_output.bed
+awk 'BEGIN{FS=OFS="\t"} NR>1 {print $1, $2-1, $3}' wild_01_03_2026_hmmIBD_ibd_win10kb_annotated_q0.95.tsv > wild_output.bed
+awk 'BEGIN{FS=OFS="\t"} NR>1 {print $1, $2-1, $3}' hrp3_only_01_03_2026_hmmIBD_ibd_win10kb_annotated_q0.95.tsv > hrp3_only_output.bed
 
+
+awk 'BEGIN{OFS="\t"} {print $0, "high_IBD"}' mutant_output.bed > output_mutant.bed
+awk 'BEGIN{OFS="\t"} {print $0, "high_IBD"}' wild_output.bed > output_wild.bed
+awk 'BEGIN{OFS="\t"} {print $0, "high_IBD"}' hrp3_only_output.bed > output_hrp3_only.bed
+
+
+
+```
+
+```{python}
+# use this code for runnning for each catagory one by one 
+python -m jcvi.graphics.chromosome output_mutant.bed \
+    --size=pf.sizes --title="Ethiopia_newly_sequenced-high_IBD_regions_hrp_mutant" --gauge
 
 ```
