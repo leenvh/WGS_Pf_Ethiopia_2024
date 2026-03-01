@@ -1,0 +1,47 @@
+# first activate the ibd conda environment 
+```{bash}
+cat hrp_status.txt | xargs -I {} -P 2 sh -c 'Rscript ~/software/malaria-hub/ibd/run_hmmIBD_per_category.R \
+-d /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD/hrp_status \
+-b /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/ethiopia_vcf/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.mat.bin \
+-m /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/metadata/sample_meta_with_hrp_status_updated.csv \
+-c {} \
+--label_category hrp_status \
+--label_fws fws \
+--fws_th 0.95 \
+--label_id Sample \
+--maf 0.01 \
+--na_char NA \
+--remove_chr Pf3D7_API_v3,Pf_M76611'
+
+```
+
+# there was some warning messages
+# ~/software/hmmIBD/hmmIBD -i hrp_status/hmmIBD_hrp3_only_maf0.01.txt -o hrp_status/hmmIBD_hrp3_only_maf0.01_out 
+# i just run this manually for each group due to the warning  
+
+
+
+```{bash}
+Rscript ~/software/malaria-hub/ibd/summary_hmmIBD_results.R \
+-d /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD/hrp_status \
+--list_category hrp_status.txt \
+--legend /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD/hrp_status/ibd_matrix_hap_leg.tsv \
+--gene_product /mnt/storage13/ahri/plasmodium_falciparum/pf_genome_product.tsv \
+--ref_index /mnt/storage13/ahri/plasmodium_falciparum/Pfalciparum.genome.fasta.fai \
+--maf 0.01 \
+--window_size 10000 \
+--quantile_cutoff 0.95 \
+--remove_chr Pf3D7_API_v3,Pf_M76611
+```
+
+```{r}
+library(dplyr)
+library(tidyr, help, pos = 2, lib.loc = NULL)
+
+```
+
+
+```{python}
+
+
+```

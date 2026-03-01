@@ -1,0 +1,254 @@
+chr	start	end	genes	products	hrp3_only	mutant	wild
+4	700001	710000	NA	NA	0.121	0.129	0.117
+4	710001	720000	PF3D7_0416400(HAT1)	histone acetyltransferase, putative	0.161	0.162	0.122
+4	720001	730000	PF3D7_0416400(HAT1)	histone acetyltransferase, putative	0.165	0.167	0.127
+4	730001	740000	NA	NA	0.161	0.178	0.119
+4	740001	750000	NA	NA	0.17	0.174	0.115
+5	90001	100000	PF3D7_0502000(VPS11); PF3D7_0501800(CAF1A)	vacuolar protein sorting-associated protein 11, putative; chromatin assembly factor 1 subunit A	0.268	0.347	0.063
+5	100001	110000	PF3D7_0502000(VPS11)	vacuolar protein sorting-associated protein 11, putative	0.264	0.353	0.068
+5	110001	120000	NA	NA	0.263	0.347	0.059
+5	120001	130000	PF3D7_0502900(N/A)	Tim10/DDP family zinc finger protein, putative	0.281	0.346	0.052
+5	130001	140000	PF3D7_0503200(CDC6); PF3D7_0503300(SRSF12)	cell division control protein 6, putative; serine/arginine-rich splicing factor 12	0.259	0.346	0.05
+5	140001	150000	PF3D7_0503400(ADF1)	actin-depolymerizing factor 1	0.27	0.346	0.05
+5	150001	160000	PF3D7_0503800(RPL31)	60S ribosomal protein L31	0.265	0.346	0.046
+5	300001	310000	PF3D7_0507400(SUB1-ProM)	subtilisin propeptide-like protein	0.275	0.14	0.037
+5	310001	320000	PF3D7_0507600(CAF40)	protein CAF40, putative	0.275	0.14	0.035
+5	320001	330000	NA	NA	0.275	0.164	0.038
+5	330001	340000	PF3D7_0508100(SET9)	SET domain protein, putative	0.278	0.224	0.052
+5	340001	350000	NA	NA	0.281	0.221	0.06
+5	350001	360000	NA	NA	0.281	0.207	0.066
+5	360001	370000	PF3D7_0508900(N/A)	conserved Plasmodium protein, unknown function	0.281	0.162	0.049
+5	370001	380000	PF3D7_0508900(N/A)	conserved Plasmodium protein, unknown function	0.281	0.118	0.055
+5	440001	450000	PF3D7_0510500(TopoI)	topoisomerase I	0.275	0.188	0.101
+5	460001	470000	NA	NA	0.262	0.199	0.127
+5	470001	480000	NA	NA	0.275	0.194	0.129
+5	480001	490000	PF3D7_0511500(N/A)	RNA pseudouridylate synthase, putative	0.266	0.155	0.11
+5	870001	880000	PF3D7_0521300(N/A)	zinc finger protein, putative	0.204	0.148	0.122
+5	880001	890000	PF3D7_0521700(DDX1)	ATP-dependent RNA helicase DDX1, putative	0.197	0.174	0.155
+5	890001	900000	NA	NA	0.188	0.191	0.168
+5	900001	910000	PF3D7_0522200(TAF10)	transcription initiation factor TFIID subunit 10, putative	0.255	0.198	0.198
+5	910001	920000	NA	NA	0.255	0.213	0.2
+5	920001	930000	NA	NA	0.255	0.213	0.198
+5	930001	940000	NA	NA	0.255	0.211	0.198
+5	940001	950000	PF3D7_0522600(N/A); PF3D7_0522700(SufA)	magnesium transporter NIPA, putative; iron-sulfur cluster assembly protein SufA	0.255	0.206	0.2
+5	950001	960000	PF3D7_0523000(MDR1)	multidrug resistance protein 1	0.202	0.206	0.197
+5	960001	970000	PF3D7_0523000(MDR1)	multidrug resistance protein 1	0.15	0.21	0.168
+5	970001	980000	PF3D7_0523300(N/A)	cytochrome c oxidase subunit ApiCOX18, putative	0.15	0.213	0.161
+5	980001	990000	NA	NA	0.15	0.172	0.143
+5	990001	1000000	PF3D7_0524000(KASbeta)	karyopherin beta	0.148	0.147	0.119
+5	1000001	1010000	PF3D7_0524000(KASbeta)	karyopherin beta	0.194	0.176	0.168
+5	1010001	1020000	PF3D7_0524500(N/A); PF3D7_0524400(RBG1)	conserved Plasmodium protein, unknown function; ribosome-interacting GTPase 1, putative	0.216	0.184	0.157
+5	1020001	1030000	NA	NA	0.216	0.179	0.14
+6	1020001	1030000	NA	NA	0.196	0.216	0.123
+6	1030001	1040000	NA	NA	0.224	0.235	0.135
+6	1040001	1050000	NA	NA	0.203	0.279	0.134
+6	1050001	1060000	NA	NA	0.166	0.301	0.116
+6	1060001	1070000	PF3D7_0626500(N/A); PF3D7_0626300(FabB/FabF)	conserved Plasmodium protein, unknown function; 3-oxoacyl-acyl-carrier protein synthase I/II	0.177	0.301	0.102
+6	1070001	1080000	PF3D7_0626800(PyrK); PF3D7_0626500(N/A)	pyruvate kinase; conserved Plasmodium protein, unknown function	0.261	0.298	0.118
+6	1080001	1090000	PF3D7_0626900(N/A); PF3D7_0626800(PyrK)	ribosomal protein L46, mitochondrial, putative; pyruvate kinase	0.281	0.241	0.104
+6	1090001	1100000	NA	NA	0.322	0.231	0.154
+6	1100001	1110000	NA	NA	0.383	0.2	0.195
+6	1110001	1120000	PF3D7_0627800(ACS)	acetyl-CoA synthetase, putative	0.435	0.177	0.268
+6	1120001	1130000	NA	NA	0.321	0.176	0.223
+6	1130001	1140000	NA	NA	0.216	0.176	0.118
+6	1140001	1150000	NA	NA	0.211	0.176	0.129
+6	1150001	1160000	NA	NA	0.171	0.176	0.127
+6	1160001	1170000	NA	NA	0.101	0.094	0.118
+6	1170001	1180000	NA	NA	0.098	0.088	0.128
+6	1180001	1190000	NA	NA	0.093	0.089	0.128
+6	1190001	1200000	NA	NA	0.092	0.096	0.126
+6	1200001	1210000	PF3D7_0629300(PL)	phospholipase, putative	0.097	0.096	0.114
+6	1230001	1240000	PF3D7_0629700(SET1)	SET domain protein, putative	0.163	0.192	0.132
+6	1240001	1250000	PF3D7_0629700(SET1)	SET domain protein, putative	0.212	0.271	0.157
+6	1250001	1260000	PF3D7_0630100(N/A)	alpha/beta hydrolase, putative	0.301	0.303	0.16
+6	1260001	1270000	NA	NA	0.341	0.462	0.137
+6	1270001	1280000	NA	NA	0.347	0.529	0.157
+6	1280001	1290000	NA	NA	0.339	0.516	0.144
+7	120001	130000	PF3D7_0703200(N/A)	conserved Plasmodium protein, unknown function	0.13	0.162	0.113
+7	130001	140000	NA	NA	0.131	0.162	0.116
+7	270001	280000	NA	NA	0.294	0.257	0.058
+7	280001	290000	NA	NA	0.288	0.25	0.063
+7	290001	300000	PF3D7_0706000(N/A)	importin-7, putative	0.29	0.208	0.058
+7	300001	310000	PF3D7_0706500(N/A)	conserved Plasmodium protein, unknown function	0.293	0.205	0.063
+7	310001	320000	PF3D7_0706500(N/A)	conserved Plasmodium protein, unknown function	0.275	0.186	0.067
+7	320001	330000	PF3D7_0707200(N/A)	conserved Plasmodium protein, unknown function	0.291	0.248	0.067
+7	350001	360000	PF3D7_0707700(N/A)	E3 ubiquitin-protein ligase, putative	0.235	0.314	0.03
+7	360001	370000	PF3D7_0707700(N/A)	E3 ubiquitin-protein ligase, putative	0.231	0.316	0.028
+7	370001	380000	PF3D7_0708100(RPB10)	DNA-directed RNA polymerases I, II, and III subunit RPABC5, putative	0.296	0.361	0.039
+7	380001	390000	PF3D7_0708500(N/A)	heat shock protein 86 family protein	0.51	0.542	0.067
+7	390001	400000	PF3D7_0708800(HSP110c); PF3D7_0708700(N/A)	heat shock protein 110; Cg8 protein	0.507	0.541	0.084
+7	400001	410000	PF3D7_0709000(CRT)	chloroquine resistance transporter	0.51	0.555	0.094
+7	410001	420000	NA	NA	0.516	0.559	0.118
+7	420001	430000	PF3D7_0709500(N/A)	nucleic acid-binding protein, putative	0.516	0.521	0.115
+7	430001	440000	PF3D7_0709700(PARE)	prodrug activation and resistance esterase	0.381	0.378	0.118
+7	440001	450000	NA	NA	0.353	0.332	0.087
+7	450001	460000	NA	NA	0.353	0.397	0.049
+7	460001	470000	PF3D7_0710200(N/A)	conserved Plasmodium protein, unknown function	0.354	0.397	0.046
+7	470001	480000	PF3D7_0710200(N/A); PF3D7_0710600(RPL34)	conserved Plasmodium protein, unknown function; 60S ribosomal protein L34	0.352	0.397	0.047
+7	480001	490000	PF3D7_0710700(N/A)	conserved Plasmodium protein, unknown function	0.31	0.397	0.032
+7	500001	510000	NA	NA	0.278	0.233	0.036
+7	610001	620000	PF3D7_0713600(N/A)	ribosomal protein S5, mitochondrial, putative	0.286	0.321	0.034
+7	620001	630000	PF3D7_0713600(N/A)	ribosomal protein S5, mitochondrial, putative	0.353	0.397	0.036
+7	1170001	1180000	NA	NA	0.278	0.167	0.029
+7	1180001	1190000	NA	NA	0.319	0.153	0.025
+7	1190001	1200000	PF3D7_0728100(N/A); PF3D7_0728000(eIF2alpha)	anaphase-promoting complex subunit 1, putative; eukaryotic translation initiation factor 2 subunit alpha	0.333	0.169	0.02
+7	1200001	1210000	PF3D7_0728100(N/A)	anaphase-promoting complex subunit 1, putative	0.327	0.16	0.017
+7	1210001	1220000	PF3D7_0728100(N/A)	anaphase-promoting complex subunit 1, putative	0.33	0.162	0.018
+7	1220001	1230000	PF3D7_0728700(N/A)	alpha/beta hydrolase, putative	0.346	0.162	0.019
+7	1230001	1240000	PF3D7_0729000(SRP9); PF3D7_0729100(N/A)	signal recognition particle subunit SRP9; conserved Plasmodium protein, unknown function	0.35	0.162	0.028
+7	1240001	1250000	PF3D7_0729100(N/A)	conserved Plasmodium protein, unknown function	0.325	0.154	0.05
+7	1250001	1260000	PF3D7_0729400(N/A); PF3D7_0729500(MT-A70)	ribosome biogenesis protein BRX1, putative; N6-adenosine-methyltransferase MT-A70	0.292	0.125	0.081
+8	420001	430000	NA	NA	0.186	0.181	0.12
+8	480001	490000	NA	NA	0.257	0.199	0.121
+8	490001	500000	NA	NA	0.301	0.206	0.222
+8	500001	510000	PF3D7_0809900(JmjC1)	JmjC domain-containing protein, putative	0.265	0.206	0.248
+8	510001	520000	PF3D7_0810100(N/A); PF3D7_0809900(JmjC1)	ribosomal protein L33, apicoplast, putative; JmjC domain-containing protein, putative	0.307	0.205	0.23
+8	520001	530000	NA	NA	0.314	0.201	0.207
+8	530001	540000	NA	NA	0.276	0.206	0.207
+8	540001	550000	PF3D7_0810800(PPPK-DHPS); PF3D7_0810600(DBP1)	hydroxymethyldihydropterin pyrophosphokinase-dihydropteroate synthase; ATP-dependent RNA helicase DBP1, putative	0.245	0.218	0.202
+8	550001	560000	PF3D7_0810800(PPPK-DHPS)	hydroxymethyldihydropterin pyrophosphokinase-dihydropteroate synthase	0.217	0.174	0.119
+8	560001	570000	PF3D7_0811300(CAF1)	CCR4-associated factor 1	0.238	0.176	0.114
+8	570001	580000	PF3D7_0811500(CARM1); PF3D7_0811300(CAF1)	histone-arginine methyltransferase CARM1, putative; CCR4-associated factor 1	0.248	0.227	0.126
+8	580001	590000	PF3D7_0811500(CARM1)	histone-arginine methyltransferase CARM1, putative	0.26	0.279	0.145
+8	590001	600000	NA	NA	0.279	0.279	0.144
+8	600001	610000	NA	NA	0.274	0.279	0.138
+8	610001	620000	PF3D7_0812220(YihA3)	GTP-binding protein YihA3	0.275	0.279	0.148
+8	620001	630000	PF3D7_0812500(N/A); PF3D7_0812400(KARalpha)	RNA-binding protein, putative; karyopherin alpha	0.281	0.272	0.149
+8	630001	640000	NA	NA	0.308	0.287	0.16
+8	640001	650000	PF3D7_0813100(N/A); PF3D7_0813000(KIC7)	conserved Plasmodium protein, unknown function; protein KIC7	0.314	0.263	0.162
+8	650001	660000	PF3D7_0813400(N/A)	conserved protein, unknown function	0.311	0.242	0.168
+8	660001	670000	PF3D7_0813600(N/A); PF3D7_0813400(N/A)	translation initiation factor SUI1, putative; conserved protein, unknown function	0.313	0.221	0.141
+8	670001	680000	PF3D7_0813600(N/A); PF3D7_0813900(RPS16)	translation initiation factor SUI1, putative; 40S ribosomal protein S16, putative	0.332	0.235	0.145
+8	680001	690000	PF3D7_0814000(N/A)	60S ribosomal protein L13-2, putative	0.314	0.246	0.146
+8	690001	700000	NA	NA	0.32	0.25	0.136
+8	700001	710000	NA	NA	0.316	0.219	0.134
+8	710001	720000	PF3D7_0815200(N/A)	importin subunit beta, putative	0.288	0.203	0.117
+8	720001	730000	PF3D7_0815600(EIF3G)	eukaryotic translation initiation factor 3 subunit G, putative	0.303	0.151	0.087
+8	730001	740000	PF3D7_0815600(EIF3G); PF3D7_0815800(VPS9)	eukaryotic translation initiation factor 3 subunit G, putative; vacuolar protein sorting-associated protein 9, putative	0.275	0.136	0.088
+8	740001	750000	PF3D7_0816000(RRB1); PF3D7_0815800(VPS9)	ribosome assembly protein RRB1, putative; vacuolar protein sorting-associated protein 9, putative	0.275	0.156	0.083
+8	750001	760000	PF3D7_0816300(N/A)	HAP2-GCS1 domain-containing protein, putative	0.275	0.172	0.084
+8	920001	930000	NA	NA	0.275	0.297	0.044
+8	930001	940000	NA	NA	0.363	0.304	0.044
+8	940001	950000	NA	NA	0.326	0.236	0.042
+8	950001	960000	PF3D7_0821200(N/A)	conserved protein, unknown function	0.276	0.201	0.032
+8	960001	970000	PF3D7_0821400(N/A)	conserved Plasmodium protein, unknown function	0.28	0.191	0.022
+9	260001	270000	NA	NA	0.137	0.118	0.113
+9	270001	280000	NA	NA	0.137	0.118	0.118
+9	280001	290000	PF3D7_0905800(N/A)	conserved Plasmodium protein, unknown function	0.151	0.118	0.118
+9	420001	430000	PF3D7_0909400(N/A)	exoribonuclease, putative	0.137	0.301	0.063
+9	430001	440000	NA	NA	0.137	0.3	0.064
+9	540001	550000	NA	NA	0.261	0.203	0.039
+9	550001	560000	NA	NA	0.261	0.206	0.034
+9	590001	600000	NA	NA	0.361	0.145	0.049
+9	600001	610000	NA	NA	0.349	0.153	0.045
+9	610001	620000	PF3D7_0914400(KIC3)	protein KIC3	0.295	0.14	0.027
+10	80001	90000	PF3D7_1001500(ETRAMP10)	early transcribed membrane protein 10.1	0.275	0.154	0.063
+10	90001	100000	PF3D7_1001900(PfJ23)	Plasmodium exported protein (hyp16), unknown function	0.275	0.139	0.064
+10	190001	200000	PF3D7_1004300(N/A)	E3 ubiquitin-protein ligase, putative	0.262	0.084	0.036
+10	1380001	1390000	PF3D7_1034900(MRScyt)	methionine--tRNA ligase	0.102	0.301	0.047
+10	1390001	1400000	NA	NA	0.104	0.31	0.069
+10	1400001	1410000	PF3D7_1035400(MSP3)	merozoite surface protein 3	0.109	0.301	0.054
+10	1420001	1430000	NA	NA	0.169	0.309	0.072
+10	1430001	1440000	NA	NA	0.312	0.408	0.164
+10	1440001	1450000	NA	NA	0.288	0.382	0.087
+10	1450001	1460000	PF3D7_1036900(N/A)	conserved Plasmodium protein, unknown function	0.28	0.303	0.059
+10	1480001	1490000	NA	NA	0.164	0.311	0.057
+10	1490001	1500000	PF3D7_1037700(ERH)	enhancer of rudimentary homolog, putative	0.16	0.331	0.064
+10	1500001	1510000	NA	NA	0.163	0.337	0.063
+10	1510001	1520000	NA	NA	0.161	0.332	0.051
+11	1980001	1990000	NA	NA	0.145	0.123	0.119
+12	780001	790000	NA	NA	0.22	0.334	0.063
+12	790001	800000	NA	NA	0.321	0.399	0.096
+12	800001	810000	PF3D7_1220300(N/A)	cell cycle associated protein, putative	0.338	0.446	0.095
+12	810001	820000	PF3D7_1220300(N/A)	cell cycle associated protein, putative	0.261	0.405	0.083
+12	820001	830000	NA	NA	0.252	0.382	0.071
+12	830001	840000	PF3D7_1221000(SET10); PF3D7_1220900(HP1)	histone-lysine N-methyltransferase, H3 lysine-4 specific; heterochromatin protein 1	0.248	0.36	0.076
+12	840001	850000	PF3D7_1221000(SET10)	histone-lysine N-methyltransferase, H3 lysine-4 specific	0.207	0.354	0.077
+12	850001	860000	NA	NA	0.168	0.353	0.073
+12	860001	870000	NA	NA	0.149	0.353	0.071
+12	870001	880000	NA	NA	0.171	0.349	0.07
+12	880001	890000	NA	NA	0.174	0.331	0.079
+12	890001	900000	NA	NA	0.222	0.331	0.112
+12	900001	910000	PF3D7_1222600(AP2-G)	AP2 domain transcription factor AP2-G	0.199	0.337	0.107
+12	910001	920000	PF3D7_1222600(AP2-G)	AP2 domain transcription factor AP2-G	0.203	0.346	0.102
+12	920001	930000	PF3D7_1223100(PKAr)	cAMP-dependent protein kinase regulatory subunit	0.199	0.328	0.096
+12	930001	940000	NA	NA	0.177	0.309	0.082
+12	1140001	1150000	PF3D7_1228000(N/A); PF3D7_1228300(NEK1)	conserved protein, unknown function; NIMA related kinase 1	0.122	0.332	0.03
+12	1150001	1160000	PF3D7_1228400(N/A); PF3D7_1228300(NEK1)	conserved Plasmodium protein, unknown function; NIMA related kinase 1	0.125	0.331	0.038
+12	1160001	1170000	NA	NA	0.15	0.311	0.042
+12	1630001	1640000	PF3D7_1239200(ApiAP2)	AP2 domain transcription factor, putative	0.133	0.305	0.036
+12	1640001	1650000	PF3D7_1239200(ApiAP2); PF3D7_1239500(GyrB)	AP2 domain transcription factor, putative; DNA gyrase subunit B	0.124	0.316	0.034
+12	1650001	1660000	PF3D7_1239500(GyrB)	DNA gyrase subunit B	0.126	0.316	0.035
+12	1660001	1670000	PF3D7_1239800(N/A)	conserved Plasmodium protein, unknown function	0.155	0.316	0.038
+12	1670001	1680000	PF3D7_1239800(N/A)	conserved Plasmodium protein, unknown function	0.19	0.316	0.038
+12	1680001	1690000	PF3D7_1240000(N/A)	3-hydroxyisobutyryl-CoA hydrolase, putative	0.19	0.316	0.047
+12	1920001	1930000	PF3D7_1246300(KIC4)	protein KIC4	0.136	0.299	0.031
+12	1930001	1940000	PF3D7_1246400(MTIP)	myosin A-tail interacting protein	0.137	0.324	0.032
+12	1940001	1950000	PF3D7_1247000(FBXO9); PF3D7_1247000(FBXO9); PF3D7_1247000(FBXO9); PF3D7_1247000(FBXO9)	F-box only protein 9 homolog, putative; F-box only protein 9 homolog, putative; F-box only protein 9 homolog, putative; F-box only protein 9 homolog, putative	0.147	0.315	0.035
+12	1950001	1960000	PF3D7_1247400(FKBP35)	peptidyl-prolyl cis-trans isomerase FKBP35	0.147	0.315	0.034
+12	2110001	2120000	PF3D7_1251800(N/A); PF3D7_1252100(RON3)	conserved Plasmodium protein, unknown function; rhoptry neck protein 3	0.163	0.316	0.045
+12	2120001	2130000	PF3D7_1252100(RON3)	rhoptry neck protein 3	0.161	0.316	0.038
+12	2130001	2140000	NA	NA	0.157	0.301	0.035
+13	80001	90000	NA	NA	0.288	0.36	0.044
+13	90001	100000	PF3D7_1301700(CBP2)	CX3CL1-binding protein 2	0.288	0.355	0.043
+13	100001	110000	PF3D7_1301700(CBP2)	CX3CL1-binding protein 2	0.335	0.45	0.075
+13	110001	120000	PF3D7_1302000(PTP6)	EMP1-trafficking protein	0.288	0.297	0.066
+13	120001	130000	PF3D7_1302100(G27/25)	gamete antigen 27/25	0.267	0.241	0.052
+13	560001	570000	NA	NA	0.134	0.213	0.113
+13	580001	590000	PF3D7_1313600(N/A)	Clu domain-containing protein, putative	0.205	0.213	0.115
+13	2110001	2120000	NA	NA	0.215	0.193	0.122
+13	2120001	2130000	PF3D7_1353100(N/A)	Plasmodium exported protein, unknown function	0.205	0.191	0.119
+13	2250001	2260000	PF3D7_1356800(ARK3)	serine/threonine protein kinase ARK3, putative	0.209	0.25	0.119
+13	2260001	2270000	PF3D7_1356800(ARK3); PF3D7_1357100(N/A)	serine/threonine protein kinase ARK3, putative; elongation factor 1-alpha	0.216	0.25	0.131
+13	2270001	2280000	PF3D7_1357100(N/A)	elongation factor 1-alpha	0.214	0.25	0.127
+13	2280001	2290000	PF3D7_1357700(UTP21)	U3 small nucleolar RNA-associated protein 21, putative	0.2	0.25	0.127
+13	2390001	2400000	NA	NA	0.111	0.306	0.108
+13	2400001	2410000	PF3D7_1360100(RRM1)	RNA-binding protein, putative	0.111	0.301	0.096
+14	720001	730000	PF3D7_1417500(CBF5)	H/ACA ribonucleoprotein complex subunit 4, putative	0.064	0.106	0.115
+14	730001	740000	NA	NA	0.064	0.109	0.124
+14	740001	750000	NA	NA	0.059	0.1	0.112
+14	1650001	1660000	PF3D7_1440500(N/A)	allantoicase, putative	0.11	0.332	0.065
+14	1660001	1670000	NA	NA	0.12	0.362	0.078
+14	1670001	1680000	PF3D7_1441200(N/A); PF3D7_1441100(N/A)	60S ribosomal protein L1, putative; conserved Plasmodium protein, unknown function	0.141	0.376	0.091
+14	1680001	1690000	NA	NA	0.131	0.418	0.098
+14	1690001	1700000	PF3D7_1441400(FACT-S)	FACT complex subunit SSRP1, putative	0.138	0.419	0.104
+14	1700001	1710000	PF3D7_1442200(YihA2)	GTP-binding protein YihA2	0.129	0.419	0.106
+14	1710001	1720000	PF3D7_1442300(tRIP); PF3D7_1442200(YihA2); PF3D7_1442400(KIC9)	tRNA import protein tRIP; GTP-binding protein YihA2; protein KIC9	0.098	0.419	0.09
+14	1720001	1730000	PF3D7_1442400(KIC9)	protein KIC9	0.092	0.419	0.085
+14	1730001	1740000	NA	NA	0.089	0.41	0.063
+14	1740001	1750000	NA	NA	0.128	0.366	0.073
+14	1750001	1760000	PF3D7_1442900(ARFGEF)	Sec7 domain-containing protein ARFGEF, putative	0.157	0.368	0.075
+14	1760001	1770000	PF3D7_1443100(N/A); PF3D7_1442900(ARFGEF)	conserved Plasmodium protein, unknown function; Sec7 domain-containing protein ARFGEF, putative	0.157	0.368	0.075
+14	1770001	1780000	PF3D7_1443200(N/A); PF3D7_1443100(N/A)	heptatricopeptide repeat-containing protein, putative; conserved Plasmodium protein, unknown function	0.144	0.368	0.066
+14	1780001	1790000	NA	NA	0.142	0.371	0.062
+14	1790001	1800000	NA	NA	0.144	0.391	0.051
+14	1800001	1810000	PF3D7_1444100(N/A)	conserved Plasmodium protein, unknown function	0.154	0.397	0.046
+14	1810001	1820000	PF3D7_1444100(N/A)	conserved Plasmodium protein, unknown function	0.127	0.397	0.049
+14	1830001	1840000	NA	NA	0.2	0.364	0.058
+14	1840001	1850000	NA	NA	0.203	0.327	0.062
+14	1850001	1860000	PF3D7_1445200(MAK5)	ATP-dependent RNA helicase MAK5, putative	0.197	0.316	0.075
+14	1860001	1870000	PF3D7_1445300(N/A)	ribosomal protein S29, mitochondrial, putative	0.201	0.316	0.092
+14	1870001	1880000	NA	NA	0.202	0.316	0.103
+14	1880001	1890000	PF3D7_1445900(DDX5)	ATP-dependent RNA helicase DDX5, putative	0.19	0.316	0.108
+14	1890001	1900000	NA	NA	0.188	0.316	0.097
+14	1900001	1910000	PF3D7_1446500(NUP313)	nucleoporin NUP313, putative	0.183	0.316	0.081
+14	2090001	2100000	PF3D7_1451200(N/A); PF3D7_1451100(eEF2)	conserved Plasmodium protein, unknown function; elongation factor 2	0.085	0.196	0.114
+14	2100001	2110000	NA	NA	0.091	0.201	0.122
+14	2110001	2120000	PF3D7_1451500(N/A)	pre-mRNA-splicing factor CWF18, putative	0.089	0.184	0.124
+14	2120001	2130000	NA	NA	0.072	0.184	0.158
+14	2130001	2140000	NA	NA	0.063	0.184	0.168
+14	2140001	2150000	PF3D7_1452400(N/A); PF3D7_1452200(N/A)	conserved Plasmodium protein, unknown function; aminomethyltransferase, putative	0.059	0.184	0.168
+14	2150001	2160000	PF3D7_1452400(N/A)	conserved Plasmodium protein, unknown function	0.059	0.184	0.168
+14	2160001	2170000	NA	NA	0.059	0.184	0.168
+14	2170001	2180000	NA	NA	0.059	0.157	0.164
+14	2180001	2190000	NA	NA	0.052	0.147	0.154
+14	2190001	2200000	PF3D7_1453500(NTH)	NAD(P) transhydrogenase, putative	0.067	0.147	0.136
+14	2780001	2790000	PF3D7_1468000(N/A); PF3D7_1468100(N/A)	conserved Plasmodium protein, unknown function; MORC family protein, putative	0.302	0.199	0.093
+14	2790001	2800000	PF3D7_1468100(N/A)	MORC family protein, putative	0.319	0.199	0.096
+14	2800001	2810000	NA	NA	0.315	0.199	0.093
+14	2810001	2820000	NA	NA	0.283	0.156	0.13
+14	2820001	2830000	PF3D7_1468800(U2AF2); PF3D7_1468700(eIF4A)	splicing factor U2AF large subunit, putative; eukaryotic initiation factor 4A	0.281	0.206	0.129
+14	2830001	2840000	PF3D7_1468900(N/A); PF3D7_1468800(U2AF2)	zinc finger protein, putative; splicing factor U2AF large subunit, putative	0.277	0.235	0.131
+14	2840001	2850000	NA	NA	0.268	0.243	0.148
+14	2850001	2860000	NA	NA	0.292	0.264	0.147
+14	3120001	3130000	NA	NA	0.223	0.325	0.08
