@@ -15,3 +15,212 @@ write.csv(ir_metadata,"/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merge
 ```{bash}
 Rscript isorelate_ir.R --vcf /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/ethiopia_vcf/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.vcf.gz  --fws_metadata ../metadata/sample_meta_with_hrp_status_updated.csv --prefix hrp2_status_ --ir_metadata ir_metadata_hrp_status.csv --annotation /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/ethiopia_vcf/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.ann.wide.tsv
 ```
+
+# filtering regions which have a significant region after running the isorelate `r 
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(isoRelate, help, pos = 2, lib.loc = NULL)
+
+annotated_ir_result <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/isorelate/hrp2_status_wgs_final_IR_annotated_snpeff.csv.gz",sep=",")
+print(colnames(annotated_ir_result))
+
+filter_regions <- annotated_ir_result%>%
+    filter(log10_pvalue > 5)%>%
+    select(chr, snp_id, pos_M, pos_bp, pop, subpop, iR , log10_pvalue)
+
+p_annotated <- plotIBDiR(
+    ibd.iR = filter_regions,
+    annotation.genes = annotation_genes,
+    annotation.genes.color = c("black","red"),
+    highlight.genes = NULL,
+    highlight.genes.labels = FALSE,
+    highlight.genes.color = NULL,
+    highlight.genes.alpha = 0.1,
+    point.size = 1,
+    add.rug = FALSE,
+    plot.title = "Significance of IBD sharing (with gene annotations)",
+    add.legend = FALSE,
+    facet.label = FALSE,
+    facet.scales = "fixed"
+  )
+
+```
+
+```{r}
+library(SeqArray)
+library(moimix)
+library(isoRelate)
+library(dplyr)
+library(igraph)
+library(ggplot2)
+library(data.table)
+library(ggrepel)
+library(GenomicRanges)
+my_iR <- annotated_ir_result%>%
+    filter(subpop == "wild/wild")%>%
+    select(chr, snp_id, pos_M, pos_bp, pop, subpop, iR , log10_pvalue)
+significant_regions <- annotated_ir_result%>%
+  filter(log10_pvalue >= 5) %>% 
+  filter(!grepl("gene",Gene_name),!grepl("PF3D7",Gene_name))
+load("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/isorelate/annotation_genes.rda")
+# Plot with annotations
+annotation_genes <- annotation_genes %>%
+  mutate(chr = as.character(chr), start = as.integer(start))
+p_annotated <- plotIBDiR(
+    ibd.iR = my_iR,
+    annotation.genes = annotation_genes,
+    annotation.genes.color = c("black","red"),
+    highlight.genes = NULL,
+    highlight.genes.labels = FALSE,
+    highlight.genes.color = NULL,
+    highlight.genes.alpha = 0.1,
+    point.size = 1,
+    add.rug = FALSE,
+    plot.title = "Significance of IBD sharing (with gene annotations)",
+    add.legend = FALSE,
+    facet.label = FALSE,
+    facet.scales = "fixed"
+  )
+
+
+  
+#ggsave("IBD_iR_plot_annotated.pdf", plot = p_annotated, width = 15, height = 10)
+
+
+transform_coordinates <- function(my_iR, annotation_genes) {
+  
+  # Get unique chromosomes in order
+  chromosomes <- unique(my_iR$chr)
+  
+  # Create copies to modify
+  my_iR_transformed <- my_iR
+  annotation_genes_transformed <- annotation_genes
+  
+  # Initialize variables
+  chrstart <- 0
+  
+  # Transform coordinates for each chromosome
+  for (i in 1:length(chromosomes)) {
+    chr <- chromosomes[i]
+    
+    # Get max position for this chromosome from the iR data
+    maxpos <- max(my_iR[my_iR$chr == chr, "pos_bp"])
+    
+    # Transform SNP positions
+    my_iR_transformed[my_iR_transformed$chr == chr, "pos_bp"] <- 
+      my_iR_transformed[my_iR_transformed$chr == chr, "pos_bp"] + chrstart
+    
+    # Transform annotation positions
+    if (any(annotation_genes$chr == chr)) {
+      annotation_genes_transformed[annotation_genes_transformed$chr == chr, "start"] <- 
+        annotation_genes_transformed[annotation_genes_transformed$chr == chr, "start"] + chrstart
+      
+      annotation_genes_transformed[annotation_genes_transformed$chr == chr, "end"] <- 
+        annotation_genes_transformed[annotation_genes_transformed$chr == chr, "end"] + chrstart
+    }
+    
+    # Update chrstart for next chromosome
+    chrstart <- chrstart + maxpos
+  }
+  
+  return(list(
+    iR = my_iR_transformed,
+    annotations = annotation_genes_transformed
+  ))
+}
+
+# Apply the transformation
+transformed_data <- transform_coordinates(my_iR, annotation_genes)
+
+# Filter for significant genes as before
+overlaps <- findOverlaps(
+  GRanges(seqnames = my_iR$chr, ranges = IRanges(start = my_iR$pos_bp, end = my_iR$pos_bp)),
+  GRanges(seqnames = annotation_genes$chr, ranges = IRanges(start = annotation_genes$start, end = annotation_genes$end))
+)
+
+overlapping_snps <- my_iR[queryHits(overlaps), ]
+significant_threshold <- 0.5  # Adjust as needed
+significant_overlaps <- overlaps[overlapping_snps$log10_pvalue > significant_threshold]
+significant_genes_original <- annotation_genes[subjectHits(significant_overlaps), ]
+
+# Remove duplicates
+significant_genes_original <- significant_genes_original[!duplicated(significant_genes_original$gene_id), ]
+
+# Now transform the coordinates of these significant genes
+significant_genes_transformed <- transform_coordinates(my_iR, significant_genes_original)$annotations
+
+
+# Create the base plot
+p_base <- plotIBDiR(
+  ibd.iR = my_iR, 
+  interval = NULL, 
+  annotation.genes = NULL,
+  point.size = 1,
+  add.rug = FALSE, 
+  plot.title = "Significance of IBD sharing", 
+  add.legend = FALSE,
+  facet.label = TRUE, 
+  facet.scales = "fixed"
+)
+
+
+
+# Only show genes with very significant overlaps
+high_sig_threshold <- 5
+high_sig_overlaps <- overlaps[overlapping_snps$log10_pvalue > high_sig_threshold]
+
+if (length(high_sig_overlaps) > 0) {
+  # Get the high significance data
+  high_sig_data <- data.frame(
+    chr = overlapping_snps$chr[overlapping_snps$log10_pvalue > high_sig_threshold],
+    pos_bp = overlapping_snps$pos_bp[overlapping_snps$log10_pvalue > high_sig_threshold],
+    log10_pvalue = overlapping_snps$log10_pvalue[overlapping_snps$log10_pvalue > high_sig_threshold],
+    gene_name = annotation_genes$name[subjectHits(high_sig_overlaps)]
+  )
+  
+  # Add a color column based on gene name
+  high_sig_data$gene_color <- ifelse(high_sig_data$gene_name %in% c("AP2-G","ABCK1"), "red", "grey")
+
+
+  # Apply the SAME transformation that plotIBDiR uses
+  # Get unique chromosomes in the same order as my_iR
+  chromosomes <- unique(my_iR$chr)
+  
+  # Transform the high_sig_data coordinates
+  high_sig_data_transformed <- high_sig_data
+  chrstart <- 0
+  
+  for (i in 1:length(chromosomes)) {
+    chr <- chromosomes[i]
+    
+    # Get max position for this chromosome from the original iR data
+    maxpos <- max(my_iR[my_iR$chr == chr, "pos_bp"])
+    
+    # Transform positions for this chromosome
+    chr_mask <- high_sig_data_transformed$chr == chr
+    if (any(chr_mask)) {
+      high_sig_data_transformed[chr_mask, "pos_bp"] <- 
+        high_sig_data_transformed[chr_mask, "pos_bp"] + chrstart
+    }
+    
+    # Update chrstart for next chromosome
+    chrstart <- chrstart + maxpos
+  }
+  
+  p_clean <- p_base +
+    geom_text_repel(
+      data = high_sig_data_transformed,
+      aes(x = pos_bp, y = log10_pvalue, label = gene_name),
+      color = high_sig_data_transformed$gene_color,  # Use color directly, not in aes()
+      size = 3,
+      box.padding = 0.35,
+      point.padding = 0.3,
+      max.overlaps = 20
+    ) 
+  
+  ggsave("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/isorelate/IBD_clean_annotations_hrp_wild_wild.pdf", plot = p_clean, width = 15, height = 10)
+}
+```
+
