@@ -1,0 +1,16 @@
+"","site","hrp_status","n","total","percent"
+"1","Arba Minch","hrp3_only",8,17,47.0588235294118
+"2","Arba Minch","mutant",1,17,5.88235294117647
+"3","Arba Minch","wild",8,17,47.0588235294118
+"4","Gambella","hrp2_only",2,30,6.66666666666667
+"5","Gambella","wild",28,30,93.3333333333333
+"6","Gondar","hrp3_only",13,26,50
+"7","Gondar","mutant",12,26,46.1538461538462
+"8","Gondar","wild",1,26,3.84615384615385
+"9","Metehera Fentale","hrp3_only",11,19,57.8947368421053
+"10","Metehera Fentale","mutant",4,19,21.0526315789474
+"11","Metehera Fentale","wild",4,19,21.0526315789474
+"12","Mizan","hrp2_only",3,28,10.7142857142857
+"13","Mizan","hrp3_only",1,28,3.57142857142857
+"14","Mizan","mutant",3,28,10.7142857142857
+"15","Mizan","wild",21,28,75
