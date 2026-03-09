@@ -1,0 +1,248 @@
+---
+title: "Example processing VCF"
+format: html
+---
+
+```{r setup, echo=FALSE}
+#source("../common.R")
+```
+
+```{bash, eval = F}
+docker run -it nickjhathaway/elucidator:develop elucidator vcfToBed --vcfFile /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/ethiopia_vcf/012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.vcf.gz --out 012026_pf_mgen_ug_india_eritrea_ethiopia_popgen.filt.GT.miss0.2.vqslod.filt.snps.region.bed.gz
+
+```
+
+
+```{r}
+library(vcfR)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(vegan)
+
+#devtools::install_github(repo="knausb/vcfR")
+
+# read in VCF 
+vcf <- read.vcfR("/mnt/storage13/ahri/popgen_ethiopia_WGS/fst/072025_pf_mgen_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia.vcf.gz", verbose = FALSE)
+
+# get variant fixed info 
+fix <- as_tibble(getFIX(vcf)) %>% 
+  rowwise() %>% 
+  unite(all_calls, REF, ALT, sep = ",", remove = F)
+
+# Extract GT as a character matrix: variants (rows) x samples (cols)
+gt <- extract.gt(vcf, element = "GT", as.numeric = FALSE)
+
+# Extract AD as a character matrix: variants (rows) x samples (cols)
+AD <- extract.gt(vcf, element = "AD", as.numeric = FALSE)
+
+# combine AD and fix 
+fix_with_AD = bind_cols(
+  fix, 
+  as_tibble(AD)
+)
+
+# convert from wide to long format so that AD and the variants can be put together 
+fix_with_AD_gat = fix_with_AD %>% 
+  gather(sample, AD, 9:ncol(.)) %>% 
+  select(-ID, -ALT, -REF) %>% 
+  mutate(all_calls = strsplit(all_calls, split = ","), 
+         AD = strsplit(AD, split = ",")) %>% 
+  unnest(c(all_calls, AD)) %>% 
+  mutate(AD = as.numeric(AD)) %>% 
+  dplyr::rename(base = all_calls) # rename all_calls to base for clarity
+
+
+# filter to SNPS that have marked as pass and to only calls that have greater than 0 allele depth (so actually present in data)
+fix_with_AD_gat_filt = fix_with_AD_gat %>% 
+  filter(FILTER == "PASS", AD > 0)
+write.csv(fix_with_AD_gat_filt,"fix_with_AD_gat_filt.csv",row.names=F)
+
+fix_with_AD_gat_filt_samples = fix_with_AD_gat_filt %>% 
+  select(sample) %>% 
+  unique()
+write.csv(fix_with_AD_gat_filt_samples,"fix_with_AD_gat_filt_samples.csv",row.names=F)
+
+
+```
+
+
+```{r}
+fix_with_AD_gat_filt <- read.csv()
+Metadata_Popgen_Ethiopia_withfws = read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hrp2_analysis/metadata_pop_gen.tsv",sep="\t")
+
+# filtering to sample that I know populations for 
+fix_with_AD_gat_filt_samples_ethiopia_known = fix_with_AD_gat_filt %>% 
+  filter(sample %in% Metadata_Popgen_Ethiopia_withfws$Sample) %>% 
+  group_by(CHROM, POS, sample) %>%
+  mutate(total_AD = sum(AD)) %>% 
+  mutate(wsaf = AD/total_AD) %>% 
+  left_join(Metadata_Popgen_Ethiopia_withfws %>% 
+              select(Sample, site) %>% 
+              dplyr::rename(sample = Sample))
+
+# since taking a subset of samples, filter to positions where there are more than one variant 
+fix_with_AD_gat_filt_samples_ethiopia_known_with_variation = fix_with_AD_gat_filt_samples_ethiopia_known %>% 
+  group_by(CHROM, POS) %>% 
+  filter(n_distinct(base) > 1)
+
+# get within sample frequency weighted allele freqs, by taking a within sample frequency can mitigate somewhat the fact we don't know COI 
+fix_with_AD_gat_filt_samples_ethiopia_known_with_variation_allele_freqs = fix_with_AD_gat_filt_samples_ethiopia_known_with_variation %>% 
+  group_by(CHROM, POS, site) %>% 
+  mutate(total_wsaf = sum(wsaf)) %>% 
+  group_by(CHROM, POS, base, total_wsaf, site) %>% 
+  summarise(wsaf_sum = sum(wsaf)) %>% 
+  mutate(allele_freq = wsaf_sum/total_wsaf) %>% 
+  dplyr::rename(total_population_sample_count = total_wsaf, 
+                population = site) %>% 
+  unite(CHROM_POS, CHROM, POS, sep = "-", remove = F) %>% 
+  arrange(CHROM, POS, base, population)
+
+
+
+```
+
+
+```{r}
+quick_summary <- function(x, probs = c(0.25, 0.5, 0.75)) {
+  q <- quantile(x, probs = probs, na.rm = TRUE)
+  tibble(
+    n = length(x[!is.na(x)]), 
+    sd = sd(x, na.rm = TRUE),
+    mean = mean(x, na.rm = TRUE),
+    min  = min(x, na.rm = TRUE),
+    max  = max(x, na.rm = TRUE),
+    !!!setNames(as.list(q), paste0("q", probs*100))
+  )
+}
+
+# heterozygosity function 
+He <- function(p) {
+  1 - sum(p^2)
+}
+
+
+#' Calculates Jost's D and GST between two allele frequency vectors, vectors must be named and missing alleles from either population will be assumed to be zero 
+#'
+#' @param freqA named allele frequency vector of population A
+#' @param freqB named allele frequency vector of population B
+#'
+#' @returns a tibble with Hs, Ht, Gst, JostD
+#' @export
+#'
+pairwise_stats <- function(freqA, freqB) {
+  # freqA / freqB are named numeric vectors: names = alleles
+  alleles <- union(names(freqA), names(freqB))
+  pA <- freqA[alleles]; pA[is.na(pA)] <- 0
+  pB <- freqB[alleles]; pB[is.na(pB)] <- 0
+  
+  HeA <- He(pA)
+  HeB <- He(pB)
+  Hs  <- mean(c(HeA, HeB))
+  
+  pbar <- (pA + pB) / 2
+  Ht   <- He(pbar)
+  
+  Gst  <- ifelse(Ht == 0, NA_real_, (Ht - Hs) / Ht)
+  JostD <- ifelse((1 - Hs) == 0, NA_real_,
+                  2 * (Ht - Hs) / (1 - Hs))
+  
+  tibble(Hs = Hs, Ht = Ht, Gst = Gst, JostD = JostD)
+}
+
+# collapse freq calls into named vectors so the above helper functions can work 
+pairwise_pop_diff = fix_with_AD_gat_filt_samples_ethiopia_known_with_variation_allele_freqs %>% 
+  ungroup() %>% 
+  select(CHROM_POS, population, base, allele_freq) %>%
+  group_by(CHROM_POS, population) %>%
+  summarize(freqs = list(setNames(allele_freq, base)), .groups = "drop") %>%
+  group_by(CHROM_POS) %>%
+  summarize(
+    freqs_by_pop = list(setNames(freqs, population)),
+    pop_pairs    = list(combn(population, 2, simplify = FALSE)),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    stats = map2(pop_pairs, freqs_by_pop, \(pp, fbyp) {
+      map_dfr(pp, \(pair) {
+        pairwise_stats(fbyp[[pair[1]]], fbyp[[pair[2]]]) %>%
+          mutate(pop1 = pair[1], pop2 = pair[2])
+      })
+    })
+  ) %>%
+  select(CHROM_POS, stats) %>%
+  unnest(stats) %>% # add in population size counts so can filter off low coverage in populations to exclude high pop diff measures based on just low sample counts 
+  left_join(
+    fix_with_AD_gat_filt_samples_ethiopia_known_with_variation_allele_freqs %>% 
+      ungroup() %>% 
+      select(CHROM_POS, population, total_population_sample_count) %>% 
+      unique()  %>% 
+      dplyr::rename(pop1 = population, 
+                    pop1_sample_count = total_population_sample_count)
+  )%>% 
+  left_join(
+    fix_with_AD_gat_filt_samples_ethiopia_known_with_variation_allele_freqs %>% 
+      ungroup() %>% 
+      select(CHROM_POS, population, total_population_sample_count) %>% 
+      unique() %>% 
+      dplyr::rename(pop2 = population, 
+                    pop2_sample_count = total_population_sample_count)
+  )
+
+# filter to populations with at least 10 samples each 
+pairwise_pop_diff_filt = pairwise_pop_diff %>% 
+  filter(pop1_sample_count > 10, 
+         pop2_sample_count > 10) %>% 
+  separate(CHROM_POS, remove = F, sep = "-", into = c("CHROM", "POS"), convert = T)
+
+write_tsv(pairwise_pop_diff_filt, "ethopia_by_site_JostD_chr13_subregion.tsv")
+
+# getting a summary of JostD for all pairwise comparisons between samples
+pairwise_pop_diff_filt_mean_JostD = pairwise_pop_diff_filt %>% 
+  rowwise() %>% 
+  mutate(pair_id = paste0(sort(c(pop1, pop2)), collapse = " vs ")) %>% 
+  group_by(pair_id) %>% 
+  summarise(quick_summary(JostD)) %>% 
+  arrange(desc(mean))
+
+create_dt(pairwise_pop_diff_filt_mean_JostD)
+```
+
+
+<!-- Processing ena info  -->
+
+<!-- ```{r} -->
+<!-- enas = readr::read_tsv("enas.txt", col_names = "run_accession") -->
+
+<!-- masterTable = readr::read_tsv("/Users/nicholashathaway/Library/CloudStorage/Dropbox/ownCloud/documents/plasmodium/falciparum/allSRAData/update_2025_10/masterTable.tab.txt") %>%  -->
+<!--   mutate(SRARuns = strsplit(SRARuns, ",")) %>%  -->
+<!--   unnest(SRARuns) -->
+
+<!-- new_malariagen_submission = readr::read_tsv("/Users/nicholashathaway/Library/CloudStorage/Dropbox/ownCloud/documents/plasmodium/falciparum/allSRAData/update_2026_02/PRJEB96783-run-info.tsv") -->
+
+
+<!-- enas_missing_from_master = enas %>%  -->
+<!--   filter(run_accession %!in% masterTable$SRARuns) -->
+
+<!-- enas_missing_from_master_missing_from_malariagen = enas_missing_from_master %>%  -->
+<!--   filter(run_accession %!in% new_malariagen_submission$run_accession) -->
+<!-- cat(enas_missing_from_master_missing_from_malariagen$run_accession, file = "missing_accessions/missing_info_accessions.txt", sep = "\n") -->
+
+<!-- ``` -->
+
+
+<!-- ```{bash, eval = F} -->
+<!-- for x in `cat missing_info_accessions.txt`; do fastq-dl --only-download-metadata --prefix ${x} -a ${x}; done;  -->
+<!-- ``` -->
+
+
+<!-- SRR34783462 and ERR15708776 appear to be the same samples  -->
+
+<!-- ```{r} -->
+<!-- SRR34783462 = readr::read_tsv("missing_accessions/SRR34783462-run-info.tsv") -->
+
+<!-- new_malariagen_submission_ERR15708776 = new_malariagen_submission %>%  -->
+<!--   filter(run_accession == "ERR15708776") -->
+<!-- ``` -->
+
+
