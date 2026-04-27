@@ -557,6 +557,7 @@ similarity_check <- pop_allele_freq%>%
 
 ```
 
+Preparing bed files for the pathweaver  
 ```{r}
 # to make bed file for the pathweaver extraction and to run the seekdeep for the variant calling in those region 
 
@@ -601,6 +602,7 @@ write.table(
 )
 ```
 
+Genotype Extraction for the drug resisitance genes using the Seekdeep output from the pathweaver 
 ```{bash}
 # for merging the bed file for the drug resistance genes and the bed file with the new targets 
 cat /mnt/storage13/ahri/hrp2_analysis/bed_file/aat1_ap2mu_co_fer.bed ~/hrp2_analysis/bed_file/all_drug_resistance.bed > ~/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_all_drug_res.bed
@@ -611,9 +613,14 @@ cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_
 # I put the output file in the genonotype_extraction folder  
 nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp ~/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_all_drug_res.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
 
-# this works so i plan to merge the two bed files into one and also add some targets including coronin and ferodoxin 
+# for extracting drug resistance gene variants for the TES samples 
+cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/Tes_all_samples
+
+nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp ~/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_all_drug_res.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaver_Tes_samples --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
+
 ```
 
+Output analysis after running the pathweaver 
 ```{r}
 suppleme_fws <- read.csv(
   "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/supplementary_Data/supp_fws_up.tsv",
@@ -632,7 +639,7 @@ seekdeep_output <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country
   mutate(Sample = gsub("_libLAN[0-9]+", "", Sample))%>%
   right_join(suppleme_fws, by = "Sample")
 
-# there are some issue related with samples to have two allele on one target so i just count the distnict sample for each allele and then calculate the frequency based on that
+# there are some issue related with samples which  have two allele on one target so i just count the distnict sample for each allele and then calculate the frequency based on that
 library(readxl)
 supplementary_data <- read_xlsx("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/supplementary_Data/Supplementary_Data.xlsx" , sheet = 2 , skip=2 , col_names = TRUE) %>%
   select(gene,pos,aa_change)
@@ -668,10 +675,90 @@ wide_output <- allel_seekdeep_output %>%
     mutate(Gene = recode(Gene , "PF3D7_1251200"="Coronin"))
 readr::write_tsv(wide_output , "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/wide_allel_freq_seekdeep_output_all.tsv")
 
+wide_sample <- seekdeep_output %>%
+  filter(AA_cnt != 0) %>%
+  select(sample, Gene, reference_AA_pos, reference_AA, AA) %>%
+  mutate(
+    mutation_status = ifelse(reference_AA == AA, "wildtype", "mutant"),
+    mut_change = paste0(reference_AA, reference_AA_pos, AA)  # e.g. A123T
+  ) %>%
+  filter(mutation_status == "mutant") %>%
+  pivot_wider(
+    names_from = sample,
+    values_from = mut_change,
+    values_fill = "0"
+  )%>%
+    filter(!Gene %in% c("PF3D7_1322700","PF3D7_1149600")) %>%
+    mutate(Gene = recode(Gene , "PF3D7_1251200"="Coronin"))
+readr::write_tsv(wide_sample , "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu/wide_sample_seekdeep_output_all.tsv")
 
+  # analysis for the TES samples 
+
+  metadata_tes <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/Tes_all_samples/metadata.tsv",sep="\t")%>%
+  mutate(Sample = gsub("_S[0-9]+$", "", sample))  %>% 
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>% 
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>% 
+  mutate(Sample = gsub("_libLAN[0-9]+", "", Sample))%>%
+  mutate(Sample = gsub("-", "_", Sample))%>%
+  select(-sample)
+  seekdeep_output_tes <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaver_Tes_samples/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz", sep = "\t")%>%
+  mutate(Sample = gsub("_S[0-9]+$", "", sample))  %>% 
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>% 
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>% 
+  mutate(Sample = gsub("_libLAN[0-9]+", "", Sample))%>%
+  mutate(Sample = gsub("-", "_", Sample))%>%
+  #right_join(metadata_tes, by = "Sample")%>%
+  mutate(Gene = recode(Gene , "PF3D7_1251200"="Coronin"))%>%
+  filter(Gene %in% c("Coronin","PX1","AAT1","AP2MU","UBP1"))%>%
+  filter(AA_cnt != 0) 
+
+readr::write_tsv(seekdeep_output_tes , "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaver_Tes_samples/filtered_region_interest_px1.tsv")
+
+
+allel_seekdeep_output_tes <- seekdeep_output_tes %>%
+  filter(AA_cnt != 0) %>%
+  group_by(Gene_ID, Gene, reference_AA_pos, reference_AA,Treatment) %>%
+  mutate(total = n_distinct(Sample)) %>%
+  group_by(Gene_ID, Gene, reference_AA_pos, reference_AA, AA,Treatment) %>%
+  summarise(
+    sum_allele = n_distinct(Sample), 
+    total = first(total),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    allele_freq = sum_allele / total,
+    aa_change = paste0(reference_AA_pos, reference_AA, ">", reference_AA_pos, AA),
+    allele_sample_size = paste0(round(allele_freq, 3), " (", sum_allele, "/", total, ")"),
+    mutation_status = ifelse(reference_AA == AA, "wildtype", "mutant")
+  ) %>%
+  filter(mutation_status == "mutant")
+
+wide_output_tes <- allel_seekdeep_output_tes %>%
+  select(Gene_ID,Gene, reference_AA_pos, reference_AA, AA, aa_change,Treatment,
+          allele_sample_size) %>%
+  pivot_wider(
+    names_from = Treatment,
+    values_from = allele_sample_size,
+    values_fill = "0"
+  )%>%
+    filter(!Gene %in% c("PF3D7_1322700","PF3D7_1149600")) %>%
+    mutate(Gene = recode(Gene , "PF3D7_1251200"="Coronin"))
+
+  wide_sample_tes <- seekdeep_output_tes %>%
+  filter(AA_cnt != 0) %>%
+  select(Sample, Gene, reference_AA_pos, reference_AA, AA) %>%
+  mutate(
+    mutation_status = ifelse(reference_AA == AA, "wildtype", "mutant"),
+    mut_change = paste0(reference_AA, reference_AA_pos, AA)  # e.g. A123T
+  ) %>%
+  filter(mutation_status == "mutant") %>%
+  pivot_wider(
+    names_from = Sample,
+    values_from = mut_change,
+    values_fill = "0"
+  )
 
 ```
-
 
 ```{bash}
 # i just tried this command for extracting the amino acid changes with having position but seems not working
