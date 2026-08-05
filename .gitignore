@@ -1,0 +1,17 @@
+genotype_extraction/targets_pathweaver/*
+ethiopia_vcf/*
+genotype_extraction/*
+work/*
+duplication_mdr1_pla/*
+fws/*
+flanking_haplotype_updated/*
+hmmIBD/*
+jostD_stat/*
+kinship_result/*
+logestic_regression/*
+pca/*
+neighbour_joining_tree/*
+selection/*
+whole_genome_scripts/work/*
+whole_genome_scripts/_book/*
+whole_genome_scripts/.nextflow/
