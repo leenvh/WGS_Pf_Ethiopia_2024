@@ -1,0 +1,91 @@
+```{bash}
+mkdir -p output_px1/px1_seekdeep_output/
+conda activate nf-core
+cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/cram/
+  
+  nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/crt_genomic_background/ouput_px1/bed/px1_new_nick_small.bed  --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/crt_genomic_background/output_px1/px1_seekdeep_output --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
+```
+
+```{r}
+library(dplyr)
+  library(tidyr)
+  library(purrr)
+
+  suppleme_fws <- read.csv(
+    "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/supplementary_Data/supp_fws_up.tsv",
+    sep = "\t"
+  ) %>%
+  #   select(sample_id, Country, fws) %>%
+    mutate(Sample = gsub("_S[0-9]+$", "", sample_id)) %>%
+    mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+    mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+    mutate(Sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+    filter(Year == 2024) %>%
+    select(Sample, Country, fws,Site) |> 
+    filter(Country == "Ethiopia") 
+# readr::write_tsv(suppleme_fws,"metadata_sample/ethiopia_samples_2024.tsv",col_names = TRUE)
+
+  # to see the px1 and the carl gene
+  seekdeep_output_additional <- read.csv(  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/crt_genomic_background/output_px1/px1_seekdeep_output/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz",
+    sep = "\t") %>%
+    mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
+    mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+    mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+    mutate(Sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+  #   mutate(Gene = recode(Gene, "PF3D7_1251200" = "Coronin")) %>%
+    #filter(Gene %in% c("Coronin","PX1","AAT1","AP2-MU","UBP1","Kelch13","CRT","PPPK-DHPS","DHFR-TS","MDR1"))%>%
+    filter(AA_cnt != 0) %>%
+    select(
+      Sample,
+      Gene,
+      Gene_ID,
+      reference_AA_pos,
+      reference_AA,
+      AA,
+      is_reference,
+      AA_freq,
+      AA_cnt
+    ) %>%
+    # dplyr::rename(Read = AA_cnt)
+    right_join(suppleme_fws, by = "Sample")
+
+  colnames(seekdeep_output_additional)
+  wide_sample <- seekdeep_output_additional %>%
+    filter(!grepl("0." , AA_freq)) |> # this filter out hetrozygous and missing samples
+    mutate(
+      mutation_status = ifelse(reference_AA == AA, "wildtype", "mutant"),
+      mutation_test = ifelse(
+        reference_AA == AA,
+        paste0("0", "(", AA_freq, ")"),
+        paste0(reference_AA, reference_AA_pos, AA, "(", AA_freq, ")")
+      )
+    ) %>%
+    select(Sample, Gene, reference_AA_pos, mutation_test, Country) %>%
+    group_by(Gene, reference_AA_pos, Sample) %>%
+    summarise(
+      mutation_test = paste(unique(mutation_test), collapse = ";"),
+      .groups = "drop"
+    ) %>%
+      filter(reference_AA_pos %in% c(1222, 1701, 1705)) %>%
+    pivot_wider(
+      names_from = reference_AA_pos,
+      values_from = mutation_test,
+      values_fill = "NA"
+    ) |> 
+      mutate(haplotype = paste(`1222`, `1701`, `1705`, sep = "/")) |> 
+      # filter(haplotype != "0(1)/0(1)/0(1)") |> 
+      left_join(suppleme_fws, by = "Sample")
+      
+    distinict_haplotype <- wide_sample %>%
+      select(haplotype)|>
+      distinct() 
+    print(distinict_haplotype)
+
+    haplotype_freq <- wide_sample %>%
+      group_by(Site) |>
+      mutate(n_samples = n_distinct(Sample)) |>
+      group_by(Site, haplotype,n_samples) |>
+      summarise(n_samples_haplotype = n_distinct(Sample), .groups = "drop") |>
+      mutate(freq = n_samples_haplotype / n_samples)
+
+```
