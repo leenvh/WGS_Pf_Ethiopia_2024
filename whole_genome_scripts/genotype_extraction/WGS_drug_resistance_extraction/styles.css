@@ -1,0 +1,33 @@
+/* css styles */
+
+.menuTitle {
+  color: var(--bs-info);
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+
+.btn {
+  margin: 5px;  
+}
+
+.cell-output code {
+  white-space: pre-wrap;
+  border: 1px solid grey;
+  padding: 1em;
+}
+
+.btn {
+  margin: 5px;
+  border-radius: 12px;
+}
+
+code {
+  color: #8be9fd;
+}
+
+code > span {
+  padding-left: 1em;   /* Adds padding to the start of every line */
+  text-indent: -1em;   /* Pulls the very first part of the line back by that amount, but subsequent wrapped lines will respect the padding */
+}
+

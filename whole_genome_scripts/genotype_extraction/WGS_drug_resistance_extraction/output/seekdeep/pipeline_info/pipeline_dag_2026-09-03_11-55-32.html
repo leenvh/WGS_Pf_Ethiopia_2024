@@ -1,0 +1,142 @@
+<!--
+  ~ Copyright 2013-2024, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v0["Channel.fromPath"]
+    v1["gff_fnp"]
+    v2["genome_twobit_fnp"]
+    v3["publish_dir"]
+    v7["Channel.fromPath"]
+    v13["pub_results_dir"]
+    v19["dirstub"]
+    v20["meta_fnp"]
+    v21["pub_results_dir"]
+    v30["Channel.fromPath"]
+    v31["genome_dir_fnp"]
+    v32["primary_genome"]
+    v33["gff_fnp"]
+    v34["known_amino_acid_changes_fnp"]
+    v35["variant_frequency_cut_off"]
+    v36["variant_occurrence_cut_off"]
+    v37["getting_pairwise_comps"]
+    v38["meta_fields_to_calc_pop_diffs"]
+    v39["pub_results_dir"]
+    v40["extra_args"]
+    v42["outdir"]
+    v43["basic_reports_qmd"]
+    v44["render_report"]
+    end
+    subgraph "PATHWEAVER_EXTRACT_REGIONS_FULL [PATHWEAVER_EXTRACT_REGIONS_FULL]"
+    subgraph "PATHWEAVER_EXTRACT_REGIONS_FULL:PATHWEAVER_EXTRACT_REGIONS_WITH_BED [PATHWEAVER_EXTRACT_REGIONS_WITH_BED]"
+    v4(["GET_INTERSECTING_GENE_INFO_FOR_REGIONS"])
+    subgraph "PATHWEAVER_EXTRACT_REGIONS_FULL:PATHWEAVER_EXTRACT_REGIONS_WITH_BED:PATHWEAVER_EXTRACT_REGIONS_AND_POP_CLUSTER [PATHWEAVER_EXTRACT_REGIONS_AND_POP_CLUSTER]"
+    v11(["EXTRACT_REGION_ASSEMBLIES"])
+    v14(["CONCATENATE_EXTRACT_REGION_ASSEMBLIES_RESULTS"])
+    v22(["PATHWEAVER_POP_CLUSTERING"])
+    v41(["VARIANT_CALL_ON_HAP_TABLE"])
+    v8(( ))
+    v12(( ))
+    v18(( ))
+    end
+    v45(["PW_CREATE_DASHBOARDS"])
+    end
+    end
+    subgraph " "
+    v5[" "]
+    v6[" "]
+    v15[" "]
+    v16[" "]
+    v17[" "]
+    v23[" "]
+    v24[" "]
+    v25[" "]
+    v26[" "]
+    v27["pop_clustering_res_pop_clustering_dir"]
+    v46[" "]
+    end
+    v0 --> v4
+    v0 --> v41
+    v0 --> v8
+    v1 --> v4
+    v2 --> v4
+    v3 --> v4
+    v4 --> v6
+    v4 --> v45
+    v4 --> v5
+    v7 --> v8
+    v8 --> v11
+    v11 --> v12
+    v11 --> v18
+    v13 --> v14
+    v12 --> v14
+    v14 --> v17
+    v14 --> v16
+    v14 --> v15
+    v19 --> v22
+    v20 --> v22
+    v21 --> v22
+    v18 --> v22
+    v22 --> v27
+    v22 --> v41
+    v22 --> v26
+    v22 --> v25
+    v22 --> v24
+    v22 --> v45
+    v22 --> v23
+    v30 --> v41
+    v31 --> v41
+    v32 --> v41
+    v33 --> v41
+    v34 --> v41
+    v35 --> v41
+    v36 --> v41
+    v37 --> v41
+    v38 --> v41
+    v39 --> v41
+    v40 --> v41
+    v41 --> v45
+    v42 --> v45
+    v43 --> v45
+    v44 --> v45
+    v45 --> v46
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>

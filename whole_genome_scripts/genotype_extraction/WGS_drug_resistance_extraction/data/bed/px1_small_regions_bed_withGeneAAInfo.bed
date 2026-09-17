@@ -1,0 +1,3 @@
+#chrom	start	end	name	score	strand	transcriptID	AAStart-1based	AAEnd-1based	GeneDescription	Name	description
+Pf3D7_07_v3	895847	895931	for_PF3D7_0720700.1-AA1222	84	+	PF3D7_0720700.1	1213	1241	phosphoinositide-binding protein PX1	PX1	phosphoinositide-binding protein PX1
+Pf3D7_07_v3	897170	897388	for_PF3D7_0720700.1-AA1701_for_PF3D7_0720700.1-AA1705	218	+	PF3D7_0720700.1	1654	1727	phosphoinositide-binding protein PX1	PX1	phosphoinositide-binding protein PX1
