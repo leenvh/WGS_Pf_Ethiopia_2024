@@ -1,0 +1,419 @@
+Pf3D7_05_v3	929869	929898	Pf3D7_05_v3-929384-929984-for__var.0	29	+	[ID=PF3D7_0522400;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_05_v3	930420	930449	Pf3D7_05_v3-930125-931175-for__var.0	29	+	[ID=PF3D7_0522400;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_05_v3	930932	930961	Pf3D7_05_v3-930125-931175-for__var.1	29	+	[ID=PF3D7_0522400;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_05_v3	932549	932578	Pf3D7_05_v3-931751-933001-for__var.0	29	+	[ID=PF3D7_0522400;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_05_v3	934940	936291	Pf3D7_05_v3-933100-936400-for__var.0	1351	+	[ID=PF3D7_0522400;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_05_v3	937106	937135	Pf3D7_05_v3-937044-937444-for__var.0	29	+	
+Pf3D7_05_v3	937413	937442	Pf3D7_05_v3-937044-937444-for__var.1	29	+	[ID=PF3D7_0522500;feature=protein_coding_gene;description=50S ribosomal protein L17, apicoplast, putative;Name=RPL17;]
+Pf3D7_05_v3	938050	938069	Pf3D7_05_v3-937819-938069-for__var.0	19	+	
+Pf3D7_05_v3	939755	939784	Pf3D7_05_v3-939537-939937-for__var.0	29	+	[ID=PF3D7_0522600;feature=protein_coding_gene;description=magnesium transporter NIPA, putative;Name=NA;]
+Pf3D7_05_v3	940518	940547	Pf3D7_05_v3-940250-941700-for__var.0	29	+	[ID=PF3D7_0522600;feature=protein_coding_gene;description=magnesium transporter NIPA, putative;Name=NA;]
+Pf3D7_05_v3	945628	945657	Pf3D7_05_v3-945426-945876-for__var.0	29	+	[ID=PF3D7_0522800;feature=protein_coding_gene;description=pre-mRNA-splicing factor BUD31, putative;Name=BUD31;]
+Pf3D7_05_v3	949143	949172	Pf3D7_05_v3-948639-949389-for__var.0	29	+	[ID=PF3D7_0522900;feature=protein_coding_gene;description=zinc finger protein, putative;Name=NA;]
+Pf3D7_05_v3	950902	950931	Pf3D7_05_v3-949560-951510-for__var.0	29	+	[ID=PF3D7_0522900;feature=protein_coding_gene;description=zinc finger protein, putative;Name=NA;]
+Pf3D7_05_v3	952565	952594	Pf3D7_05_v3-952324-952874-for__var.0	29	+	[ID=PF3D7_0522900;feature=protein_coding_gene;description=zinc finger protein, putative;Name=NA;]
+Pf3D7_05_v3	953364	953393	Pf3D7_05_v3-952995-953595-for__var.0	29	+	[ID=PF3D7_0522900;feature=protein_coding_gene;description=zinc finger protein, putative;Name=NA;]
+Pf3D7_05_v3	954941	954972	Pf3D7_05_v3-954660-955410-for__var.0	31	+	
+Pf3D7_05_v3	955331	955406	Pf3D7_05_v3-954660-955410-for__var.1	75	+	
+Pf3D7_05_v3	958425	958454	Pf3D7_05_v3-957775-959675-for__var.0	29	+	[ID=PF3D7_0523000;feature=protein_coding_gene;description=multidrug resistance protein 1;Name=MDR1;]
+Pf3D7_05_v3	966295	966332	Pf3D7_05_v3-966013-968013-for__var.0	37	+	[ID=PF3D7_0523200;feature=protein_coding_gene;description=heptatricopeptide repeat-containing protein, putative;Name=NA;]
+Pf3D7_05_v3	967628	967665	Pf3D7_05_v3-966013-968013-for__var.1	37	+	[ID=PF3D7_0523200;feature=protein_coding_gene;description=heptatricopeptide repeat-containing protein, putative;Name=NA;]
+Pf3D7_05_v3	968818	968847	Pf3D7_05_v3-968063-969063-for__var.0	29	+	[ID=PF3D7_0523200;feature=protein_coding_gene;description=heptatricopeptide repeat-containing protein, putative;Name=NA;]
+Pf3D7_05_v3	979736	979765	Pf3D7_05_v3-979677-979977-for__var.0	29	+	[ID=PF3D7_0523600;feature=protein_coding_gene;description=conserved protein, unknown function;Name=NA;]
+Pf3D7_05_v3	981722	981757	Pf3D7_05_v3-980741-983741-for__var.0	35	+	[ID=PF3D7_0523700;feature=protein_coding_gene;description=conserved Plasmodium membrane protein, unknown function;Name=NA;]
+Pf3D7_05_v3	983037	983072	Pf3D7_05_v3-980741-983741-for__var.1	35	+	[ID=PF3D7_0523700;feature=protein_coding_gene;description=conserved Plasmodium membrane protein, unknown function;Name=NA;]
+Pf3D7_05_v3	983275	983310	Pf3D7_05_v3-980741-983741-for__var.2	35	+	[ID=PF3D7_0523700;feature=protein_coding_gene;description=conserved Plasmodium membrane protein, unknown function;Name=NA;]
+Pf3D7_05_v3	983877	983906	Pf3D7_05_v3-983874-984924-for__var.0	29	+	[ID=PF3D7_0523700;feature=protein_coding_gene;description=conserved Plasmodium membrane protein, unknown function;Name=NA;]
+Pf3D7_05_v3	983927	983956	Pf3D7_05_v3-983874-984924-for__var.1	29	+	[ID=PF3D7_0523700;feature=protein_coding_gene;description=conserved Plasmodium membrane protein, unknown function;Name=NA;]
+Pf3D7_05_v3	986961	987141	Pf3D7_05_v3-986891-987141-for__var.0	180	+	[ID=PF3D7_0523800;feature=protein_coding_gene;description=food vacuole resident transporter 1;Name=FVRT1;]
+Pf3D7_08_v3	1290365	1290394	Pf3D7_08_v3-1290239-1291029-for__var.0	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1290451	1290480	Pf3D7_08_v3-1290239-1291029-for__var.1	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1290481	1290510	Pf3D7_08_v3-1290239-1291029-for__var.2	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1290497	1290526	Pf3D7_08_v3-1290239-1291029-for__var.3	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1290841	1290870	Pf3D7_08_v3-1290239-1291029-for__var.4	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1290946	1290975	Pf3D7_08_v3-1290239-1291029-for__var.5	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1291109	1291138	Pf3D7_08_v3-1291082-1291226-for__var.0	29	+	[ID=PF3D7_0830300;feature=protein_coding_gene;description=sporozoite invasion-associated protein 2;Name=SIAP2;]
+Pf3D7_08_v3	1293487	1293516	Pf3D7_08_v3-1293411-1293525-for__var.0	29	+	[ID=PF3D7_0830400;feature=protein_coding_gene;description=CRA domain-containing protein, putative;Name=NA;]
+Pf3D7_08_v3	1295882	1295911	Pf3D7_08_v3-1295741-1295942-for__var.0	29	+	[ID=PF3D7_0830500;feature=protein_coding_gene;description=sporozoite and liver stage tryptophan-rich protein, putative;Name=TryThrA;]
+Pf3D7_08_v3	1295903	1295942	Pf3D7_08_v3-1295741-1295942-for__var.1	39	+	[ID=PF3D7_0830500;feature=protein_coding_gene;description=sporozoite and liver stage tryptophan-rich protein, putative;Name=TryThrA;]
+Pf3D7_08_v3	1297268	1297297	Pf3D7_08_v3-1296928-1297974-for__var.0	29	+	[ID=PF3D7_0830500;feature=protein_coding_gene;description=sporozoite and liver stage tryptophan-rich protein, putative;Name=TryThrA;]
+Pf3D7_08_v3	1297579	1297608	Pf3D7_08_v3-1296928-1297974-for__var.1	29	+	[ID=PF3D7_0830500;feature=protein_coding_gene;description=sporozoite and liver stage tryptophan-rich protein, putative;Name=TryThrA;]
+Pf3D7_08_v3	1298285	1298314	Pf3D7_08_v3-1298161-1298343-for__var.0	29	+	[ID=PF3D7_0830500;feature=protein_coding_gene;description=sporozoite and liver stage tryptophan-rich protein, putative;Name=TryThrA;]
+Pf3D7_08_v3	1298611	1298640	Pf3D7_08_v3-1298605-1298725-for__var.0	29	+	[ID=PF3D7_0830500;feature=protein_coding_gene;description=sporozoite and liver stage tryptophan-rich protein, putative;Name=TryThrA;]
+Pf3D7_08_v3	1300536	1300565	Pf3D7_08_v3-1300435-1300565-for__var.0	29	+	
+Pf3D7_08_v3	1300833	1300862	Pf3D7_08_v3-1300647-1300926-for__var.0	29	+	
+Pf3D7_08_v3	1303640	1303669	Pf3D7_08_v3-1303610-1304165-for__var.0	29	+	[ID=PF3D7_0830600;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=NA;]
+Pf3D7_08_v3	1304469	1304498	Pf3D7_08_v3-1304228-1304853-for__var.0	29	+	[ID=PF3D7_0830600;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=NA;]
+Pf3D7_08_v3	1304564	1304593	Pf3D7_08_v3-1304228-1304853-for__var.1	29	+	[ID=PF3D7_0830600;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=NA;]
+Pf3D7_08_v3	1304637	1304666	Pf3D7_08_v3-1304228-1304853-for__var.2	29	+	[ID=PF3D7_0830600;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=NA;]
+Pf3D7_08_v3	1306855	1306884	Pf3D7_08_v3-1306752-1306886-for__var.0	29	+	[ID=PF3D7_0830700;feature=protein_coding_gene;description=Plasmodium exported protein (hyp9), unknown function;Name=NA;]
+Pf3D7_08_v3	1307707	1307736	Pf3D7_08_v3-1307282-1307950-for__var.0	29	+	[ID=PF3D7_0830700;feature=protein_coding_gene;description=Plasmodium exported protein (hyp9), unknown function;Name=NA;]
+Pf3D7_08_v3	1308418	1308447	Pf3D7_08_v3-1308384-1308616-for__var.0	29	+	[ID=PF3D7_0830700;feature=protein_coding_gene;description=Plasmodium exported protein (hyp9), unknown function;Name=NA;]
+Pf3D7_08_v3	1308494	1308531	Pf3D7_08_v3-1308384-1308616-for__var.1	37	+	[ID=PF3D7_0830700;feature=protein_coding_gene;description=Plasmodium exported protein (hyp9), unknown function;Name=NA;]
+Pf3D7_08_v3	1308546	1308575	Pf3D7_08_v3-1308384-1308616-for__var.2	29	+	[ID=PF3D7_0830700;feature=protein_coding_gene;description=Plasmodium exported protein (hyp9), unknown function;Name=NA;]
+Pf3D7_08_v3	1308565	1308594	Pf3D7_08_v3-1308384-1308616-for__var.3	29	+	[ID=PF3D7_0830700;feature=protein_coding_gene;description=Plasmodium exported protein (hyp9), unknown function;Name=NA;]
+Pf3D7_08_v3	1310650	1310701	Pf3D7_08_v3-1310245-1312346-for__var.00	51	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310699	1310736	Pf3D7_08_v3-1310245-1312346-for__var.01	37	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310725	1310754	Pf3D7_08_v3-1310245-1312346-for__var.02	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310744	1310774	Pf3D7_08_v3-1310245-1312346-for__var.03	30	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310790	1310824	Pf3D7_08_v3-1310245-1312346-for__var.04	34	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310847	1310885	Pf3D7_08_v3-1310245-1312346-for__var.05	38	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310874	1310903	Pf3D7_08_v3-1310245-1312346-for__var.06	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310895	1310924	Pf3D7_08_v3-1310245-1312346-for__var.07	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310955	1310984	Pf3D7_08_v3-1310245-1312346-for__var.08	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1310974	1311005	Pf3D7_08_v3-1310245-1312346-for__var.09	31	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311005	1311056	Pf3D7_08_v3-1310245-1312346-for__var.10	51	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311068	1311130	Pf3D7_08_v3-1310245-1312346-for__var.11	62	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311117	1311164	Pf3D7_08_v3-1310245-1312346-for__var.12	47	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311198	1311255	Pf3D7_08_v3-1310245-1312346-for__var.13	57	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311247	1311315	Pf3D7_08_v3-1310245-1312346-for__var.14	68	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311339	1311372	Pf3D7_08_v3-1310245-1312346-for__var.15	33	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311362	1311391	Pf3D7_08_v3-1310245-1312346-for__var.16	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311379	1311408	Pf3D7_08_v3-1310245-1312346-for__var.17	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311399	1311444	Pf3D7_08_v3-1310245-1312346-for__var.18	45	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311438	1311510	Pf3D7_08_v3-1310245-1312346-for__var.19	72	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311504	1311549	Pf3D7_08_v3-1310245-1312346-for__var.20	45	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311559	1311598	Pf3D7_08_v3-1310245-1312346-for__var.21	39	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311602	1311637	Pf3D7_08_v3-1310245-1312346-for__var.22	35	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311630	1311659	Pf3D7_08_v3-1310245-1312346-for__var.23	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311649	1311678	Pf3D7_08_v3-1310245-1312346-for__var.24	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311676	1311705	Pf3D7_08_v3-1310245-1312346-for__var.25	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311693	1311726	Pf3D7_08_v3-1310245-1312346-for__var.26	33	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311745	1311896	Pf3D7_08_v3-1310245-1312346-for__var.27	151	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1311883	1312183	Pf3D7_08_v3-1310245-1312346-for__var.28	300	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1312170	1312258	Pf3D7_08_v3-1310245-1312346-for__var.29	88	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1312310	1312339	Pf3D7_08_v3-1310245-1312346-for__var.30	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1312527	1312556	Pf3D7_08_v3-1312523-1312761-for__var.0	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1312610	1312639	Pf3D7_08_v3-1312523-1312761-for__var.1	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1312684	1312713	Pf3D7_08_v3-1312523-1312761-for__var.2	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1313065	1313094	Pf3D7_08_v3-1312814-1313449-for__var.0	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1313187	1313216	Pf3D7_08_v3-1312814-1313449-for__var.1	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1313589	1313618	Pf3D7_08_v3-1313507-1314123-for__var.0	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1313781	1313810	Pf3D7_08_v3-1313507-1314123-for__var.1	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1314018	1314047	Pf3D7_08_v3-1313507-1314123-for__var.2	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1314628	1314669	Pf3D7_08_v3-1314318-1315568-for__var.0	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1314701	1314742	Pf3D7_08_v3-1314318-1315568-for__var.1	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1314810	1314851	Pf3D7_08_v3-1314318-1315568-for__var.2	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1314861	1314902	Pf3D7_08_v3-1314318-1315568-for__var.3	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315266	1315307	Pf3D7_08_v3-1314318-1315568-for__var.4	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315317	1315358	Pf3D7_08_v3-1314318-1315568-for__var.5	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315481	1315522	Pf3D7_08_v3-1314318-1315568-for__var.6	41	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315547	1315568	Pf3D7_08_v3-1314318-1315568-for__var.7	21	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315680	1315715	Pf3D7_08_v3-1315643-1316574-for__var.0	35	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315796	1315825	Pf3D7_08_v3-1315643-1316574-for__var.1	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1315869	1315898	Pf3D7_08_v3-1315643-1316574-for__var.2	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316080	1316109	Pf3D7_08_v3-1315643-1316574-for__var.3	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316130	1316159	Pf3D7_08_v3-1315643-1316574-for__var.4	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316207	1316236	Pf3D7_08_v3-1315643-1316574-for__var.5	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316716	1316747	Pf3D7_08_v3-1316716-1316973-for__var.0	31	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316762	1316791	Pf3D7_08_v3-1316716-1316973-for__var.1	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316814	1316843	Pf3D7_08_v3-1316716-1316973-for__var.2	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1316868	1316897	Pf3D7_08_v3-1316716-1316973-for__var.3	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;]
+Pf3D7_08_v3	1317056	1317085	Pf3D7_08_v3-1317034-1317255-for__var.0	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;],[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1317131	1317160	Pf3D7_08_v3-1317034-1317255-for__var.1	29	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;],[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1317224	1317255	Pf3D7_08_v3-1317034-1317255-for__var.2	31	+	[ID=PF3D7_0830800;feature=protein_coding_gene;description=surface-associated interspersed protein 8.2 (SURFIN 8.2);Name=SURF8.2;],[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1317725	1317754	Pf3D7_08_v3-1317583-1318120-for__var.0	29	+	[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1317863	1317892	Pf3D7_08_v3-1317583-1318120-for__var.1	29	+	[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1318042	1318071	Pf3D7_08_v3-1317583-1318120-for__var.2	29	+	[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1318064	1318093	Pf3D7_08_v3-1317583-1318120-for__var.3	29	+	[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1318093	1318120	Pf3D7_08_v3-1317583-1318120-for__var.4	27	+	[ID=PF3D7_0830900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1321629	1321648	Pf3D7_08_v3-1321395-1321648-for__var.0	19	+	[ID=PF3D7_0831000;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTb), unknown function;Name=GEXP09;]
+Pf3D7_08_v3	1323700	1323774	Pf3D7_08_v3-1323504-1323774-for__var.0	74	+	
+Pf3D7_08_v3	1325162	1325201	Pf3D7_08_v3-1325095-1326045-for__var.0	39	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1325804	1325833	Pf3D7_08_v3-1325095-1326045-for__var.1	29	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1325945	1326022	Pf3D7_08_v3-1325095-1326045-for__var.2	77	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1326154	1326175	Pf3D7_08_v3-1326154-1326418-for__var.0	21	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1326162	1326203	Pf3D7_08_v3-1326154-1326418-for__var.1	41	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1326191	1326231	Pf3D7_08_v3-1326154-1326418-for__var.2	40	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1326221	1326256	Pf3D7_08_v3-1326154-1326418-for__var.3	35	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1326243	1326284	Pf3D7_08_v3-1326154-1326418-for__var.4	41	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1330230	1330259	Pf3D7_08_v3-1330127-1331200-for__var.0	29	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1330327	1330356	Pf3D7_08_v3-1330127-1331200-for__var.1	29	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1330352	1330381	Pf3D7_08_v3-1330127-1331200-for__var.2	29	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1330599	1330628	Pf3D7_08_v3-1330127-1331200-for__var.3	29	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1330753	1331200	Pf3D7_08_v3-1330127-1331200-for__var.4	447	+	[ID=PF3D7_0831100;feature=protein_coding_gene;description=surface-associated interspersed protein 8.1 (SURFIN 8.1);Name=SURF8.1;]
+Pf3D7_08_v3	1335655	1335684	Pf3D7_08_v3-1334854-1336312-for__var.0	29	+	[ID=PF3D7_0831200;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_08_v3	1335762	1335791	Pf3D7_08_v3-1334854-1336312-for__var.1	29	+	[ID=PF3D7_0831200;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_08_v3	1335948	1335977	Pf3D7_08_v3-1334854-1336312-for__var.2	29	+	[ID=PF3D7_0831200;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_08_v3	1336727	1336756	Pf3D7_08_v3-1336612-1336778-for__var.0	29	+	
+Pf3D7_08_v3	1336743	1336772	Pf3D7_08_v3-1336612-1336778-for__var.1	29	+	
+Pf3D7_08_v3	1337001	1337030	Pf3D7_08_v3-1336952-1337141-for__var.0	29	+	
+Pf3D7_08_v3	1337119	1337141	Pf3D7_08_v3-1336952-1337141-for__var.1	22	+	
+Pf3D7_08_v3	1338354	1338383	Pf3D7_08_v3-1338252-1338542-for__var.0	29	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1340061	1340090	Pf3D7_08_v3-1339888-1340213-for__var.0	29	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1340769	1340813	Pf3D7_08_v3-1340732-1340926-for__var.0	44	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1341097	1341172	Pf3D7_08_v3-1340978-1342288-for__var.0	75	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1341211	1341310	Pf3D7_08_v3-1340978-1342288-for__var.1	99	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1341589	1341664	Pf3D7_08_v3-1340978-1342288-for__var.2	75	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1341739	1341814	Pf3D7_08_v3-1340978-1342288-for__var.3	75	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1342110	1342185	Pf3D7_08_v3-1340978-1342288-for__var.4	75	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1342171	1342267	Pf3D7_08_v3-1340978-1342288-for__var.5	96	+	[ID=PF3D7_0831300;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=GEXP13;]
+Pf3D7_08_v3	1343720	1344029	Pf3D7_08_v3-1343588-1344029-for__var.0	309	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1344493	1344543	Pf3D7_08_v3-1344423-1344973-for__var.0	50	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1344554	1344583	Pf3D7_08_v3-1344423-1344973-for__var.1	29	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1344720	1344751	Pf3D7_08_v3-1344423-1344973-for__var.2	31	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1344764	1344793	Pf3D7_08_v3-1344423-1344973-for__var.3	29	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1345133	1345162	Pf3D7_08_v3-1345120-1345336-for__var.0	29	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1345850	1345879	Pf3D7_08_v3-1345700-1345909-for__var.0	29	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1345881	1345909	Pf3D7_08_v3-1345700-1345909-for__var.1	28	+	[ID=PF3D7_0831400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_08_v3	1347800	1347829	Pf3D7_08_v3-1347612-1347948-for__var.0	29	+	
+Pf3D7_08_v3	1348121	1348138	Pf3D7_08_v3-1348026-1348138-for__var.0	17	+	
+Pf3D7_08_v3	1349763	1349792	Pf3D7_08_v3-1349688-1350091-for__var.0	29	+	
+Pf3D7_08_v3	1355293	1355322	Pf3D7_08_v3-1355268-1355429-for__var.0	29	+	[ID=PF3D7_0831500;feature=protein_coding_gene;description=Plasmodium exported protein (PHIST), unknown function;Name=NA;]
+Pf3D7_08_v3	1356233	1356262	Pf3D7_08_v3-1355892-1356295-for__var.0	29	+	[ID=PF3D7_0831500;feature=protein_coding_gene;description=Plasmodium exported protein (PHIST), unknown function;Name=NA;]
+Pf3D7_08_v3	1356504	1356527	Pf3D7_08_v3-1356353-1356527-for__var.0	23	+	
+Pf3D7_08_v3	1356911	1356940	Pf3D7_08_v3-1356735-1357005-for__var.0	29	+	
+Pf3D7_08_v3	1357381	1357410	Pf3D7_08_v3-1357247-1357437-for__var.0	29	+	
+Pf3D7_08_v3	1358938	1358967	Pf3D7_08_v3-1358219-1359148-for__var.0	29	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1358956	1358985	Pf3D7_08_v3-1358219-1359148-for__var.1	29	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1359722	1359751	Pf3D7_08_v3-1359297-1359841-for__var.0	29	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1360221	1360250	Pf3D7_08_v3-1360120-1360269-for__var.0	29	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1362932	1362973	Pf3D7_08_v3-1362900-1363100-for__var.0	41	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1362980	1363021	Pf3D7_08_v3-1362900-1363100-for__var.1	41	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1363012	1363041	Pf3D7_08_v3-1362900-1363100-for__var.2	29	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1363033	1363062	Pf3D7_08_v3-1362900-1363100-for__var.3	29	+	[ID=PF3D7_0831600;feature=protein_coding_gene;description=cytoadherence linked asexual protein 8;Name=CLAG8;]
+Pf3D7_08_v3	1364799	1364828	Pf3D7_08_v3-1364774-1364998-for__var.0	29	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1366768	1366797	Pf3D7_08_v3-1365360-1367552-for__var.0	29	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1367524	1367552	Pf3D7_08_v3-1365360-1367552-for__var.1	28	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1369357	1369386	Pf3D7_08_v3-1369257-1369452-for__var.0	29	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1369391	1369420	Pf3D7_08_v3-1369257-1369452-for__var.1	29	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1369649	1369678	Pf3D7_08_v3-1369504-1369859-for__var.0	29	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1369750	1369779	Pf3D7_08_v3-1369504-1369859-for__var.1	29	+	[ID=PF3D7_0831700;feature=protein_coding_gene;description=heat shock protein 70;Name=HSP70x;]
+Pf3D7_08_v3	1372066	1372083	Pf3D7_08_v3-1371717-1372083-for__var.0	17	+	
+Pf3D7_08_v3	1372237	1372266	Pf3D7_08_v3-1372144-1372449-for__var.0	29	+	
+Pf3D7_08_v3	1372386	1372415	Pf3D7_08_v3-1372144-1372449-for__var.1	29	+	
+Pf3D7_08_v3	1375449	1375478	Pf3D7_08_v3-1375410-1375485-for__var.0	29	+	[ID=PF3D7_0831800;feature=protein_coding_gene;description=histidine-rich protein II;Name=HRP2;]
+Pf3D7_08_v3	1378218	1378253	Pf3D7_08_v3-1378006-1378662-for__var.0	35	+	
+Pf3D7_08_v3	1378612	1378647	Pf3D7_08_v3-1378006-1378662-for__var.1	35	+	
+Pf3D7_08_v3	1379328	1379359	Pf3D7_08_v3-1379154-1379915-for__var.0	31	+	
+Pf3D7_08_v3	1379360	1379391	Pf3D7_08_v3-1379154-1379915-for__var.1	31	+	
+Pf3D7_08_v3	1379540	1379571	Pf3D7_08_v3-1379154-1379915-for__var.2	31	+	
+Pf3D7_08_v3	1379613	1379644	Pf3D7_08_v3-1379154-1379915-for__var.3	31	+	
+Pf3D7_08_v3	1382706	1382735	Pf3D7_08_v3-1382680-1383155-for__var.0	29	+	
+Pf3D7_08_v3	1382731	1382760	Pf3D7_08_v3-1382680-1383155-for__var.1	29	+	
+Pf3D7_08_v3	1383016	1383045	Pf3D7_08_v3-1382680-1383155-for__var.2	29	+	
+Pf3D7_08_v3	1383139	1383155	Pf3D7_08_v3-1382680-1383155-for__var.3	16	+	
+Pf3D7_08_v3	1384973	1385002	Pf3D7_08_v3-1384837-1385370-for__var.0	29	+	
+Pf3D7_08_v3	1385042	1385071	Pf3D7_08_v3-1384837-1385370-for__var.1	29	+	
+Pf3D7_08_v3	1386518	1386533	Pf3D7_08_v3-1386518-1386680-for__var.0	15	+	
+Pf3D7_08_v3	1386525	1386554	Pf3D7_08_v3-1386518-1386680-for__var.1	29	+	
+Pf3D7_08_v3	1386566	1386595	Pf3D7_08_v3-1386518-1386680-for__var.2	29	+	
+Pf3D7_08_v3	1387091	1387120	Pf3D7_08_v3-1386739-1387414-for__var.0	29	+	
+Pf3D7_08_v3	1387782	1387808	Pf3D7_08_v3-1387782-1387982-for__var.0	26	+	
+Pf3D7_08_v3	1387813	1387842	Pf3D7_08_v3-1387782-1387982-for__var.1	29	+	
+Pf3D7_08_v3	1387948	1387977	Pf3D7_08_v3-1387782-1387982-for__var.2	29	+	
+Pf3D7_08_v3	1387964	1387982	Pf3D7_08_v3-1387782-1387982-for__var.3	18	+	
+Pf3D7_11_v3	1900416	1900453	Pf3D7_11_v3-1899619-1902700-for__var.0	37	+	[ID=PF3D7_1147800;feature=protein_coding_gene;description=membrane associated erythrocyte binding-like protein;Name=MAEBL;]
+Pf3D7_11_v3	1900939	1900976	Pf3D7_11_v3-1899619-1902700-for__var.1	37	+	[ID=PF3D7_1147800;feature=protein_coding_gene;description=membrane associated erythrocyte binding-like protein;Name=MAEBL;]
+Pf3D7_11_v3	1902229	1902266	Pf3D7_11_v3-1899619-1902700-for__var.2	37	+	[ID=PF3D7_1147800;feature=protein_coding_gene;description=membrane associated erythrocyte binding-like protein;Name=MAEBL;]
+Pf3D7_11_v3	1905378	1905513	Pf3D7_11_v3-1904667-1905517-for__var.0	135	+	[ID=PF3D7_1147800;feature=protein_coding_gene;description=membrane associated erythrocyte binding-like protein;Name=MAEBL;]
+Pf3D7_11_v3	1905849	1905878	Pf3D7_11_v3-1905791-1905992-for__var.0	29	+	[ID=PF3D7_1147800;feature=protein_coding_gene;description=membrane associated erythrocyte binding-like protein;Name=MAEBL;]
+Pf3D7_11_v3	1910582	1910606	Pf3D7_11_v3-1909223-1910606-for__var.0	24	+	[ID=PF3D7_1148000;feature=protein_coding_gene;description=serine/threonine protein kinase, putative;Name=NA;]
+Pf3D7_11_v3	1911043	1911190	Pf3D7_11_v3-1910937-1911190-for__var.0	147	+	[ID=PF3D7_1148000;feature=protein_coding_gene;description=serine/threonine protein kinase, putative;Name=NA;]
+Pf3D7_11_v3	1912334	1912363	Pf3D7_11_v3-1911251-1913531-for__var.0	29	+	[ID=PF3D7_1148000;feature=protein_coding_gene;description=serine/threonine protein kinase, putative;Name=NA;]
+Pf3D7_11_v3	1912941	1912970	Pf3D7_11_v3-1911251-1913531-for__var.1	29	+	[ID=PF3D7_1148000;feature=protein_coding_gene;description=serine/threonine protein kinase, putative;Name=NA;]
+Pf3D7_11_v3	1914093	1914122	Pf3D7_11_v3-1914031-1914179-for__var.0	29	+	
+Pf3D7_11_v3	1916027	1916057	Pf3D7_11_v3-1916004-1916166-for__var.0	30	+	
+Pf3D7_11_v3	1916898	1916927	Pf3D7_11_v3-1916479-1917600-for__var.0	29	+	
+Pf3D7_11_v3	1916938	1916967	Pf3D7_11_v3-1916479-1917600-for__var.1	29	+	
+Pf3D7_11_v3	1918705	1918734	Pf3D7_11_v3-1918601-1918787-for__var.0	29	+	
+Pf3D7_11_v3	1919243	1919274	Pf3D7_11_v3-1919059-1919606-for__var.0	31	+	
+Pf3D7_11_v3	1919457	1919606	Pf3D7_11_v3-1919059-1919606-for__var.1	149	+	
+Pf3D7_11_v3	1920255	1920308	Pf3D7_11_v3-1919633-1920323-for__var.0	53	+	
+Pf3D7_11_v3	1920290	1920323	Pf3D7_11_v3-1919633-1920323-for__var.1	33	+	
+Pf3D7_11_v3	1920504	1920533	Pf3D7_11_v3-1920483-1921173-for__var.0	29	+	
+Pf3D7_11_v3	1920522	1920551	Pf3D7_11_v3-1920483-1921173-for__var.1	29	+	
+Pf3D7_11_v3	1920575	1920604	Pf3D7_11_v3-1920483-1921173-for__var.2	29	+	
+Pf3D7_11_v3	1920742	1920823	Pf3D7_11_v3-1920483-1921173-for__var.3	81	+	
+Pf3D7_11_v3	1921279	1921316	Pf3D7_11_v3-1921274-1921931-for__var.0	37	+	
+Pf3D7_11_v3	1921364	1921401	Pf3D7_11_v3-1921274-1921931-for__var.1	37	+	
+Pf3D7_11_v3	1921398	1921435	Pf3D7_11_v3-1921274-1921931-for__var.2	37	+	
+Pf3D7_11_v3	1921449	1921489	Pf3D7_11_v3-1921274-1921931-for__var.3	40	+	
+Pf3D7_11_v3	1921601	1921638	Pf3D7_11_v3-1921274-1921931-for__var.4	37	+	
+Pf3D7_11_v3	1921743	1921801	Pf3D7_11_v3-1921274-1921931-for__var.5	58	+	
+Pf3D7_11_v3	1921829	1921866	Pf3D7_11_v3-1921274-1921931-for__var.6	37	+	
+Pf3D7_11_v3	1923112	1923141	Pf3D7_11_v3-1923111-1923459-for__var.0	29	+	
+Pf3D7_11_v3	1923238	1923267	Pf3D7_11_v3-1923111-1923459-for__var.1	29	+	
+Pf3D7_11_v3	1923298	1923459	Pf3D7_11_v3-1923111-1923459-for__var.2	161	+	
+Pf3D7_11_v3	1924933	1924962	Pf3D7_11_v3-1924644-1925425-for__var.0	29	+	
+Pf3D7_11_v3	1925865	1925900	Pf3D7_11_v3-1925739-1926009-for__var.0	35	+	
+Pf3D7_11_v3	1927628	1927649	Pf3D7_11_v3-1927549-1927649-for__var.0	21	+	
+Pf3D7_11_v3	1928302	1928331	Pf3D7_11_v3-1928119-1928619-for__var.0	29	+	
+Pf3D7_11_v3	1928329	1928375	Pf3D7_11_v3-1928119-1928619-for__var.1	46	+	
+Pf3D7_11_v3	1928368	1928413	Pf3D7_11_v3-1928119-1928619-for__var.2	45	+	
+Pf3D7_11_v3	1928404	1928499	Pf3D7_11_v3-1928119-1928619-for__var.3	95	+	
+Pf3D7_11_v3	1928676	1928755	Pf3D7_11_v3-1928369-1928869-for__var.2	79	+	
+Pf3D7_11_v3	1928731	1929120	Pf3D7_11_v3-1928619-1929119-for__var.0	389	+	
+Pf3D7_11_v3	1928911	1930229	Pf3D7_11_v3-1928119-1930229-for__var.5	1318	+	
+Pf3D7_11_v3	1930375	1930404	Pf3D7_11_v3-1930369-1930444-for__var.0	29	+	
+Pf3D7_11_v3	1932661	1932690	Pf3D7_11_v3-1932629-1932704-for__var.0	29	+	
+Pf3D7_11_v3	1932733	1932765	Pf3D7_11_v3-1932729-1933165-for__var.0	32	+	
+Pf3D7_11_v3	1932770	1932799	Pf3D7_11_v3-1932729-1933165-for__var.1	29	+	
+Pf3D7_11_v3	1932787	1932848	Pf3D7_11_v3-1932729-1933165-for__var.2	61	+	
+Pf3D7_11_v3	1932991	1933165	Pf3D7_11_v3-1932729-1933165-for__var.3	174	+	
+Pf3D7_11_v3	1933274	1933316	Pf3D7_11_v3-1933209-1933379-for__var.0	42	+	[ID=PF3D7_1148700;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=GEXP12;]
+Pf3D7_11_v3	1934341	1934370	Pf3D7_11_v3-1934272-1934423-for__var.0	29	+	[ID=PF3D7_1148700;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=GEXP12;]
+Pf3D7_11_v3	1935036	1935065	Pf3D7_11_v3-1934722-1935377-for__var.0	29	+	[ID=PF3D7_1148700;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=GEXP12;]
+Pf3D7_11_v3	1935212	1935241	Pf3D7_11_v3-1934722-1935377-for__var.1	29	+	[ID=PF3D7_1148700;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTc), unknown function;Name=GEXP12;]
+Pf3D7_11_v3	1937327	1937356	Pf3D7_11_v3-1937320-1937658-for__var.0	29	+	
+Pf3D7_11_v3	1937368	1937397	Pf3D7_11_v3-1937320-1937658-for__var.1	29	+	
+Pf3D7_11_v3	1938226	1938277	Pf3D7_11_v3-1938027-1938440-for__var.0	51	+	
+Pf3D7_11_v3	1938760	1938789	Pf3D7_11_v3-1938533-1938985-for__var.0	29	+	
+Pf3D7_11_v3	1939925	1939954	Pf3D7_11_v3-1939801-1939969-for__var.0	29	+	
+Pf3D7_11_v3	1940982	1941011	Pf3D7_11_v3-1940970-1941110-for__var.0	29	+	[ID=PF3D7_1148800;feature=protein_coding_gene;description=Plasmodium exported protein (hyp11), unknown function;Name=NA;]
+Pf3D7_11_v3	1942281	1942311	Pf3D7_11_v3-1942193-1942604-for__var.0	30	+	[ID=PF3D7_1148800;feature=protein_coding_gene;description=Plasmodium exported protein (hyp11), unknown function;Name=NA;]
+Pf3D7_11_v3	1943796	1944035	Pf3D7_11_v3-1943794-1944288-for__var.0	239	+	
+Pf3D7_11_v3	1944015	1944092	Pf3D7_11_v3-1943794-1944288-for__var.1	77	+	
+Pf3D7_11_v3	1944109	1944213	Pf3D7_11_v3-1943794-1944288-for__var.2	104	+	
+Pf3D7_11_v3	1945940	1945969	Pf3D7_11_v3-1945512-1946274-for__var.0	29	+	[ID=PF3D7_1148900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1948227	1948276	Pf3D7_11_v3-1947997-1948276-for__var.0	49	+	
+Pf3D7_11_v3	1954279	1954308	Pf3D7_11_v3-1954170-1954330-for__var.0	29	+	[ID=PF3D7_1149000;feature=protein_coding_gene;description=antigen 332, DBL-like protein;Name=Pf332;]
+Pf3D7_11_v3	1959723	1959754	Pf3D7_11_v3-1959614-1959811-for__var.0	31	+	[ID=PF3D7_1149000;feature=protein_coding_gene;description=antigen 332, DBL-like protein;Name=Pf332;]
+Pf3D7_11_v3	1963793	1963812	Pf3D7_11_v3-1963675-1963812-for__var.0	19	+	[ID=PF3D7_1149000;feature=protein_coding_gene;description=antigen 332, DBL-like protein;Name=Pf332;]
+Pf3D7_11_v3	1971989	1972037	Pf3D7_11_v3-1971899-1972109-for__var.0	48	+	[ID=PF3D7_1149100;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1976781	1976810	Pf3D7_11_v3-1976738-1977863-for__var.0	29	+	[ID=PF3D7_1149200;feature=protein_coding_gene;description=ring-infected erythrocyte surface antigen;Name=RESA3;]
+Pf3D7_11_v3	1977833	1977863	Pf3D7_11_v3-1976738-1977863-for__var.1	30	+	[ID=PF3D7_1149200;feature=protein_coding_gene;description=ring-infected erythrocyte surface antigen;Name=RESA3;]
+Pf3D7_11_v3	1978645	1978674	Pf3D7_11_v3-1978160-1979335-for__var.0	29	+	[ID=PF3D7_1149200;feature=protein_coding_gene;description=ring-infected erythrocyte surface antigen;Name=RESA3;]
+Pf3D7_11_v3	1978670	1978699	Pf3D7_11_v3-1978160-1979335-for__var.1	29	+	[ID=PF3D7_1149200;feature=protein_coding_gene;description=ring-infected erythrocyte surface antigen;Name=RESA3;]
+Pf3D7_11_v3	1979016	1979045	Pf3D7_11_v3-1978160-1979335-for__var.2	29	+	[ID=PF3D7_1149200;feature=protein_coding_gene;description=ring-infected erythrocyte surface antigen;Name=RESA3;]
+Pf3D7_11_v3	1979185	1979214	Pf3D7_11_v3-1978160-1979335-for__var.3	29	+	[ID=PF3D7_1149200;feature=protein_coding_gene;description=ring-infected erythrocyte surface antigen;Name=RESA3;]
+Pf3D7_11_v3	1981238	1981267	Pf3D7_11_v3-1981110-1981288-for__var.0	29	+	
+Pf3D7_11_v3	1981877	1981962	Pf3D7_11_v3-1981476-1981967-for__var.0	85	+	
+Pf3D7_11_v3	1982211	1982243	Pf3D7_11_v3-1982148-1982313-for__var.0	32	+	[ID=PF3D7_1149300;feature=protein_coding_gene;description=serine/threonine protein kinase, FIKK family;Name=FIKK11;]
+Pf3D7_11_v3	1986185	1986228	Pf3D7_11_v3-1985884-1986228-for__var.0	43	+	[ID=PF3D7_1149400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1986333	1986362	Pf3D7_11_v3-1986284-1986501-for__var.0	29	+	[ID=PF3D7_1149400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1986646	1986675	Pf3D7_11_v3-1986561-1986814-for__var.0	29	+	[ID=PF3D7_1149400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1986748	1986777	Pf3D7_11_v3-1986561-1986814-for__var.1	29	+	[ID=PF3D7_1149400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1986778	1986807	Pf3D7_11_v3-1986561-1986814-for__var.2	29	+	[ID=PF3D7_1149400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1987348	1987377	Pf3D7_11_v3-1987265-1987528-for__var.0	29	+	[ID=PF3D7_1149400;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_11_v3	1987757	1987786	Pf3D7_11_v3-1987691-1987861-for__var.0	29	+	
+Pf3D7_11_v3	1987773	1987802	Pf3D7_11_v3-1987691-1987861-for__var.1	29	+	
+Pf3D7_11_v3	1988435	1988457	Pf3D7_11_v3-1988435-1988543-for__var.0	22	+	
+Pf3D7_11_v3	1988494	1988523	Pf3D7_11_v3-1988435-1988543-for__var.1	29	+	
+Pf3D7_11_v3	1988519	1988543	Pf3D7_11_v3-1988435-1988543-for__var.2	24	+	
+Pf3D7_11_v3	1988646	1988675	Pf3D7_11_v3-1988640-1988860-for__var.0	29	+	
+Pf3D7_11_v3	1988716	1988760	Pf3D7_11_v3-1988640-1988860-for__var.1	44	+	
+Pf3D7_11_v3	1988764	1988793	Pf3D7_11_v3-1988640-1988860-for__var.2	29	+	
+Pf3D7_11_v3	1988823	1988856	Pf3D7_11_v3-1988640-1988860-for__var.3	33	+	
+Pf3D7_11_v3	1989072	1989101	Pf3D7_11_v3-1989065-1989762-for__var.0	29	+	
+Pf3D7_11_v3	1989130	1989159	Pf3D7_11_v3-1989065-1989762-for__var.1	29	+	
+Pf3D7_11_v3	1989240	1989278	Pf3D7_11_v3-1989065-1989762-for__var.2	38	+	
+Pf3D7_11_v3	1989301	1989330	Pf3D7_11_v3-1989065-1989762-for__var.3	29	+	
+Pf3D7_11_v3	1989325	1989354	Pf3D7_11_v3-1989065-1989762-for__var.4	29	+	
+Pf3D7_11_v3	1989460	1989489	Pf3D7_11_v3-1989065-1989762-for__var.5	29	+	
+Pf3D7_11_v3	1990921	1990950	Pf3D7_11_v3-1990886-1991290-for__var.0	29	+	
+Pf3D7_11_v3	1991082	1991111	Pf3D7_11_v3-1990886-1991290-for__var.1	29	+	
+Pf3D7_11_v3	1991114	1991143	Pf3D7_11_v3-1990886-1991290-for__var.2	29	+	
+Pf3D7_11_v3	1991172	1991201	Pf3D7_11_v3-1990886-1991290-for__var.3	29	+	
+Pf3D7_11_v3	1991689	1991775	Pf3D7_11_v3-1991347-1992851-for__var.0	86	+	
+Pf3D7_11_v3	1991963	1991992	Pf3D7_11_v3-1991347-1992851-for__var.1	29	+	
+Pf3D7_11_v3	1992076	1992105	Pf3D7_11_v3-1991347-1992851-for__var.2	29	+	
+Pf3D7_11_v3	1992115	1992144	Pf3D7_11_v3-1991347-1992851-for__var.3	29	+	
+Pf3D7_11_v3	1992728	1992768	Pf3D7_11_v3-1991347-1992851-for__var.4	40	+	
+Pf3D7_11_v3	1993150	1993179	Pf3D7_11_v3-1992907-1993669-for__var.0	29	+	
+Pf3D7_11_v3	1993590	1993619	Pf3D7_11_v3-1992907-1993669-for__var.1	29	+	
+Pf3D7_11_v3	1993847	1993886	Pf3D7_11_v3-1993833-1994061-for__var.0	39	+	
+Pf3D7_11_v3	1993956	1993985	Pf3D7_11_v3-1993833-1994061-for__var.1	29	+	
+Pf3D7_11_v3	1994139	1994167	Pf3D7_11_v3-1994139-1994363-for__var.0	28	+	
+Pf3D7_11_v3	1994244	1994273	Pf3D7_11_v3-1994139-1994363-for__var.1	29	+	
+Pf3D7_11_v3	1995477	1995543	Pf3D7_11_v3-1995459-1995614-for__var.0	66	+	
+Pf3D7_11_v3	1995556	1995614	Pf3D7_11_v3-1995459-1995614-for__var.1	58	+	
+Pf3D7_11_v3	1995678	1995704	Pf3D7_11_v3-1995678-1996112-for__var.00	26	+	
+Pf3D7_11_v3	1995747	1995776	Pf3D7_11_v3-1995678-1996112-for__var.01	29	+	
+Pf3D7_11_v3	1995778	1995807	Pf3D7_11_v3-1995678-1996112-for__var.02	29	+	
+Pf3D7_11_v3	1995809	1995838	Pf3D7_11_v3-1995678-1996112-for__var.03	29	+	
+Pf3D7_11_v3	1995828	1995857	Pf3D7_11_v3-1995678-1996112-for__var.04	29	+	
+Pf3D7_11_v3	1995844	1995888	Pf3D7_11_v3-1995678-1996112-for__var.05	44	+	
+Pf3D7_11_v3	1995887	1995916	Pf3D7_11_v3-1995678-1996112-for__var.06	29	+	
+Pf3D7_11_v3	1995924	1995983	Pf3D7_11_v3-1995678-1996112-for__var.07	59	+	
+Pf3D7_11_v3	1996007	1996037	Pf3D7_11_v3-1995678-1996112-for__var.08	30	+	
+Pf3D7_11_v3	1996060	1996089	Pf3D7_11_v3-1995678-1996112-for__var.09	29	+	
+Pf3D7_11_v3	1996412	1996473	Pf3D7_11_v3-1996349-1996650-for__var.0	61	+	
+Pf3D7_11_v3	1996501	1996556	Pf3D7_11_v3-1996349-1996650-for__var.1	55	+	
+Pf3D7_11_v3	1996562	1996621	Pf3D7_11_v3-1996349-1996650-for__var.2	59	+	
+Pf3D7_11_v3	1996750	1996796	Pf3D7_11_v3-1996745-1997019-for__var.0	46	+	
+Pf3D7_11_v3	1996817	1996850	Pf3D7_11_v3-1996745-1997019-for__var.1	33	+	
+Pf3D7_11_v3	1996850	1996886	Pf3D7_11_v3-1996745-1997019-for__var.2	36	+	
+Pf3D7_11_v3	1996877	1996910	Pf3D7_11_v3-1996745-1997019-for__var.3	33	+	
+Pf3D7_11_v3	1996913	1996946	Pf3D7_11_v3-1996745-1997019-for__var.4	33	+	
+Pf3D7_11_v3	1996936	1996969	Pf3D7_11_v3-1996745-1997019-for__var.5	33	+	
+Pf3D7_11_v3	1996971	1997019	Pf3D7_11_v3-1996745-1997019-for__var.6	48	+	
+Pf3D7_11_v3	1997406	1997425	Pf3D7_11_v3-1997276-1997425-for__var.0	19	+	
+Pf3D7_11_v3	1997740	1997769	Pf3D7_11_v3-1997674-1997884-for__var.0	29	+	
+Pf3D7_11_v3	1997794	1997823	Pf3D7_11_v3-1997674-1997884-for__var.1	29	+	
+Pf3D7_11_v3	1998231	1998312	Pf3D7_11_v3-1997944-1998371-for__var.0	81	+	
+Pf3D7_11_v3	1998735	1998759	Pf3D7_11_v3-1998638-1998759-for__var.0	24	+	
+Pf3D7_11_v3	1998880	1998914	Pf3D7_11_v3-1998833-1999151-for__var.0	34	+	
+Pf3D7_11_v3	1998906	1998935	Pf3D7_11_v3-1998833-1999151-for__var.1	29	+	
+Pf3D7_11_v3	1999023	1999067	Pf3D7_11_v3-1998833-1999151-for__var.2	44	+	
+Pf3D7_11_v3	1999109	1999138	Pf3D7_11_v3-1998833-1999151-for__var.3	29	+	
+Pf3D7_11_v3	2000691	2000889	Pf3D7_11_v3-2000687-2000889-for__var.0	198	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001003	2001033	Pf3D7_11_v3-2000941-2001239-for__var.0	30	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001064	2001093	Pf3D7_11_v3-2000941-2001239-for__var.1	29	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001103	2001132	Pf3D7_11_v3-2000941-2001239-for__var.2	29	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001329	2001360	Pf3D7_11_v3-2001300-2003328-for__var.0	31	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001498	2001529	Pf3D7_11_v3-2001300-2003328-for__var.1	31	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001743	2001774	Pf3D7_11_v3-2001300-2003328-for__var.2	31	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001831	2001862	Pf3D7_11_v3-2001300-2003328-for__var.3	31	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2001858	2001926	Pf3D7_11_v3-2001300-2003328-for__var.4	68	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2002028	2002059	Pf3D7_11_v3-2001300-2003328-for__var.5	31	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2002048	2002079	Pf3D7_11_v3-2001300-2003328-for__var.6	31	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2002987	2003024	Pf3D7_11_v3-2001300-2003328-for__var.7	37	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_11_v3	2003296	2003328	Pf3D7_11_v3-2001300-2003328-for__var.8	32	+	[ID=PF3D7_1149600;feature=protein_coding_gene;description=DnaJ protein, putative;Name=NA;]
+Pf3D7_13_v3	2771421	2771450	Pf3D7_13_v3-2770961-2771467-for__var.0	29	+	[ID=PF3D7_1369500;feature=protein_coding_gene;description=nuclear cap-binding protein subunit 1, putative;Name=NA;]
+Pf3D7_13_v3	2774172	2774203	Pf3D7_13_v3-2774155-2774710-for__var.0	31	+	[ID=PF3D7_1369600;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2774248	2774277	Pf3D7_13_v3-2774155-2774710-for__var.1	29	+	[ID=PF3D7_1369600;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2775351	2775493	Pf3D7_13_v3-2774869-2775493-for__var.0	142	+	[ID=PF3D7_1369600;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2776219	2776248	Pf3D7_13_v3-2775610-2776921-for__var.0	29	+	[ID=PF3D7_1369600;feature=protein_coding_gene;description=conserved Plasmodium protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2779802	2779831	Pf3D7_13_v3-2779657-2779858-for__var.0	29	+	
+Pf3D7_13_v3	2779826	2779855	Pf3D7_13_v3-2779657-2779858-for__var.1	29	+	
+Pf3D7_13_v3	2780428	2780457	Pf3D7_13_v3-2780301-2780950-for__var.0	29	+	
+Pf3D7_13_v3	2780534	2780563	Pf3D7_13_v3-2780301-2780950-for__var.1	29	+	
+Pf3D7_13_v3	2780697	2780726	Pf3D7_13_v3-2780301-2780950-for__var.2	29	+	
+Pf3D7_13_v3	2781673	2781700	Pf3D7_13_v3-2781600-2781700-for__var.0	27	+	
+Pf3D7_13_v3	2781759	2781788	Pf3D7_13_v3-2781758-2781880-for__var.0	29	+	
+Pf3D7_13_v3	2782054	2782085	Pf3D7_13_v3-2782031-2782518-for__var.0	31	+	
+Pf3D7_13_v3	2782143	2782172	Pf3D7_13_v3-2782031-2782518-for__var.1	29	+	
+Pf3D7_13_v3	2782246	2782352	Pf3D7_13_v3-2782031-2782518-for__var.2	106	+	
+Pf3D7_13_v3	2784675	2784701	Pf3D7_13_v3-2784601-2784701-for__var.0	26	+	
+Pf3D7_13_v3	2784968	2784991	Pf3D7_13_v3-2784760-2784991-for__var.0	23	+	
+Pf3D7_13_v3	2785980	2786001	Pf3D7_13_v3-2785855-2786001-for__var.0	21	+	
+Pf3D7_13_v3	2786389	2786418	Pf3D7_13_v3-2786279-2786460-for__var.0	29	+	
+Pf3D7_13_v3	2787568	2787594	Pf3D7_13_v3-2787486-2787594-for__var.0	26	+	[ID=PF3D7_1370300;feature=protein_coding_gene;description=membrane associated histidine-rich protein 1;Name=MAHRP1;]
+Pf3D7_13_v3	2788545	2788612	Pf3D7_13_v3-2788459-2788713-for__var.0	67	+	[ID=PF3D7_1370300;feature=protein_coding_gene;description=membrane associated histidine-rich protein 1;Name=MAHRP1;]
+Pf3D7_13_v3	2788660	2788713	Pf3D7_13_v3-2788459-2788713-for__var.1	53	+	[ID=PF3D7_1370300;feature=protein_coding_gene;description=membrane associated histidine-rich protein 1;Name=MAHRP1;]
+Pf3D7_13_v3	2810573	2810602	Pf3D7_13_v3-2810295-2810670-for__var.0	29	+	
+Pf3D7_13_v3	2811804	2811835	Pf3D7_13_v3-2811531-2812250-for__var.0	31	+	
+Pf3D7_13_v3	2812210	2812241	Pf3D7_13_v3-2811531-2812250-for__var.1	31	+	
+Pf3D7_13_v3	2813120	2813149	Pf3D7_13_v3-2812812-2813812-for__var.0	29	+	
+Pf3D7_13_v3	2813268	2813297	Pf3D7_13_v3-2812812-2813812-for__var.1	29	+	
+Pf3D7_13_v3	2813760	2813789	Pf3D7_13_v3-2812812-2813812-for__var.2	29	+	
+Pf3D7_13_v3	2818332	2818361	Pf3D7_13_v3-2817793-2818576-for__var.0	29	+	
+Pf3D7_13_v3	2818558	2818576	Pf3D7_13_v3-2817793-2818576-for__var.1	18	+	
+Pf3D7_13_v3	2818783	2818812	Pf3D7_13_v3-2818775-2819613-for__var.0	29	+	
+Pf3D7_13_v3	2823599	2823615	Pf3D7_13_v3-2823425-2823615-for__var.0	16	+	[ID=PF3D7_1371700;feature=protein_coding_gene;description=serine/threonine protein kinase, FIKK family;Name=FIKK13;],[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2824436	2824513	Pf3D7_13_v3-2824201-2824800-for__var.0	77	+	[ID=PF3D7_1371700;feature=protein_coding_gene;description=serine/threonine protein kinase, FIKK family;Name=FIKK13;],[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2824555	2824584	Pf3D7_13_v3-2824201-2824800-for__var.1	29	+	[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2824598	2824638	Pf3D7_13_v3-2824201-2824800-for__var.2	40	+	[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2824662	2824691	Pf3D7_13_v3-2824201-2824800-for__var.3	29	+	[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2825049	2825078	Pf3D7_13_v3-2824854-2825124-for__var.0	29	+	[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2825498	2825527	Pf3D7_13_v3-2825358-2825601-for__var.0	29	+	[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2825785	2825823	Pf3D7_13_v3-2825749-2825855-for__var.0	38	+	[ID=PF3D7_1371800;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2826868	2826897	Pf3D7_13_v3-2826858-2827202-for__var.0	29	+	
+Pf3D7_13_v3	2830154	2830226	Pf3D7_13_v3-2830017-2830660-for__var.0	72	+	[ID=PF3D7_1371900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2830419	2830448	Pf3D7_13_v3-2830017-2830660-for__var.1	29	+	[ID=PF3D7_1371900;feature=protein_coding_gene;description=Plasmodium exported protein, unknown function;Name=NA;]
+Pf3D7_13_v3	2831648	2831674	Pf3D7_13_v3-2831522-2831674-for__var.0	26	+	
+Pf3D7_13_v3	2834369	2834398	Pf3D7_13_v3-2834318-2834467-for__var.0	29	+	[ID=PF3D7_1372000;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTa), unknown function;Name=NA;]
+Pf3D7_13_v3	2837454	2837483	Pf3D7_13_v3-2837317-2839073-for__var.0	29	+	[ID=PF3D7_1372100;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTb), unknown function;Name=GEXP04;]
+Pf3D7_13_v3	2837772	2837803	Pf3D7_13_v3-2837317-2839073-for__var.1	31	+	[ID=PF3D7_1372100;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTb), unknown function;Name=GEXP04;]
+Pf3D7_13_v3	2839289	2839318	Pf3D7_13_v3-2839159-2839449-for__var.0	29	+	[ID=PF3D7_1372100;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTb), unknown function;Name=GEXP04;]
+Pf3D7_13_v3	2840350	2840379	Pf3D7_13_v3-2840015-2840412-for__var.0	29	+	[ID=PF3D7_1372200;feature=protein_coding_gene;description=histidine-rich protein III;Name=HRPIII;]
+Pf3D7_13_v3	2840568	2840597	Pf3D7_13_v3-2840451-2840651-for__var.0	29	+	[ID=PF3D7_1372200;feature=protein_coding_gene;description=histidine-rich protein III;Name=HRPIII;]
+Pf3D7_13_v3	2841475	2841590	Pf3D7_13_v3-2841426-2841626-for__var.0	115	+	[ID=PF3D7_1372200;feature=protein_coding_gene;description=histidine-rich protein III;Name=HRPIII;]
+Pf3D7_13_v3	2842634	2842663	Pf3D7_13_v3-2842476-2842688-for__var.0	29	+	[ID=PF3D7_1372200;feature=protein_coding_gene;description=histidine-rich protein III;Name=HRPIII;]
+Pf3D7_13_v3	2842746	2842775	Pf3D7_13_v3-2842515-2842804-for__var.1	29	+	[ID=PF3D7_1372200;feature=protein_coding_gene;description=histidine-rich protein III;Name=HRPIII;]
+Pf3D7_13_v3	2843246	2843275	Pf3D7_13_v3-2843108-2843446-for__var.0	29	+	[ID=PF3D7_1372300;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTa-like);Name=NA;]
+Pf3D7_13_v3	2843331	2843360	Pf3D7_13_v3-2843108-2843446-for__var.1	29	+	[ID=PF3D7_1372300;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTa-like);Name=NA;]
+Pf3D7_13_v3	2843366	2843395	Pf3D7_13_v3-2843108-2843446-for__var.2	29	+	[ID=PF3D7_1372300;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTa-like);Name=NA;]
+Pf3D7_13_v3	2844045	2844074	Pf3D7_13_v3-2843930-2844101-for__var.0	29	+	[ID=PF3D7_1372300;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTa-like);Name=NA;]
+Pf3D7_13_v3	2844301	2844785	Pf3D7_13_v3-2844247-2844785-for__var.0	484	+	[ID=PF3D7_1372300;feature=protein_coding_gene;description=Plasmodium exported protein (PHISTa-like);Name=NA;]
