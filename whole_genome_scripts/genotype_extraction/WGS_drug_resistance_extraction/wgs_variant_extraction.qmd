@@ -26,6 +26,8 @@ There are some remaining targets such as PfCARL,KIC and some others
 ```{r}
 source("common.R")
 ```
+
+I run this script locally since there is some package issue here
 ```{r}
 # install.packages("pak") if needed 
 # install version v0.4.1 which introduces the tandem repeat work
@@ -39,10 +41,13 @@ library(dplyr)
 gff <- ensembl_gff_url("falciparum")        # or a local GFF path
 
 # genes names to extract, remove PF from CARL as we'll prefix everything with pf which works to look up all these names
-genes = c("MCA2", "KIC7", "KIC5", "KIC8", "UBP1", "CARL","px1")
+coronin <- c("PF3D7_1251200")
+genes = c("MCA2", "KIC7", "KIC5", "KIC8","KIC9", "UBP1", "CARL","px1")
 
-gene_location = PF3D7_GENES |> 
-  filter(name  %in%  c(paste0("pf", tolower(genes))))|> 
+gene_location <- PF3D7_GENES |>
+  filter(
+    name %in% paste0("pf", tolower(genes))
+  ) |>
   mutate(length = end - start)
 
 # getting the short tandems to avoid with default setting, can change what is size is acceptable per
@@ -130,6 +135,12 @@ mkdir -p /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethio
 conda activate nf-core
 cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/cram/
 nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/data/bed/exon_minus_tandems6.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/output/seekdeep_ubp_kic --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
+
+
+mkdir -p /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/output/seekdeep_kic9
+conda activate nf-core
+cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/cram/
+nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/data/bed/exon_minus_tandems_KIC9.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/output/seekdeep_kic9 --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
 ```
 
 ```{r}
@@ -151,6 +162,29 @@ suppleme_fws <- read.csv(
 
 seekdeep_results_ubp <- read.csv(
   "output/seekdeep_ubp_kic/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz",
+  sep = "\t"
+) %>%
+  mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+  mutate(Sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+  filter(AA_cnt != 0) %>%
+  select(
+    Sample,
+    Gene,
+    Gene_ID,
+    reference_AA_pos,
+    reference_AA,
+    AA,
+    is_reference,
+    AA_freq,
+    AA_cnt
+  ) %>%
+  # dplyr::rename(Read = AA_cnt)
+  right_join(suppleme_fws, by = "Sample")
+  
+seekdeep_results_kic9 <- read.csv(
+  "output/seekdeep_kic9/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz",
   sep = "\t"
 ) %>%
   mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
@@ -194,8 +228,9 @@ seekdeep_results <- read.csv(
   # dplyr::rename(Read = AA_cnt)
   right_join(suppleme_fws, by = "Sample") |> 
   # filter(Gene != "PX1") |> # the reason i remove this px1 here is that the bed file is from the one Nick send us not from the one tandem remove
-  rbind(seekdeep_results_ubp)
-
+  rbind(seekdeep_results_ubp) |> 
+  rbind(seekdeep_results_kic9)
+readr::write_tsv(seekdeep_results, "output/drug_resistance/seekdeep_results.tsv.gz")
   wide_sample <- seekdeep_results %>%
   mutate(
     mutation_status = ifelse(reference_AA == AA, "wildtype", "mutant"),
@@ -218,6 +253,7 @@ seekdeep_results <- read.csv(
     values_from = mutation_test,
     values_fill = "NA"
   )
+readr::write_tsv(pivoting_result, "output/drug_resistance/wide_sample_seekdeep_output_all_additional_variant.tsv")
 
 country_n <- wide_sample %>%
   group_by(Country,Gene,reference_AA_pos) %>%
@@ -405,10 +441,12 @@ crt_k13_target <- wide_sample %>%
 The following chunk creates an iTOL `DATASET_COLORSTRIP` annotation. Each tree tip is matched using the value in the `Sample` column, and the strip color represents the combined PX1 genotype at amino-acid positions 1222, 1701, and 1705. The tip labels in the Newick tree must exactly match these sample IDs. Haplotypes containing `NA` indicate that at least one target position did not have a genotype call; they are retained as separate categories and are not interpreted as wildtype.
 
 ```{r,eval=FALSE}
+# i just remove out the south Asia samples 
 px1_itol <- readr::read_tsv(
   "output/px1_genotype_result/px1_genotype_result.tsv",
   show_col_types = FALSE
-) %>%
+) %>% 
+  filter(!is.na(Country.x %in% c("Thailand","India","Myanmar"))) %>%
   distinct(Sample, haplotype)
 
 stopifnot(!anyDuplicated(px1_itol$Sample))
@@ -450,10 +488,342 @@ Upload `px1_genotype_itol_colorstrip.txt` to iTOL using **Datasets > Add dataset
 
 
 ```{r}
+genes <- c("CRT", "PX1","Kelch13")
+
+gene_results <- list()
+
+for (gene in genes) {
+
+  gene_results[[gene]] <- seekdeep_results |>
+    filter(Gene == gene) |>
+    # arrange is_reference so reference allele is first when arranging
+    arrange(desc(is_reference)) |>
+    group_by(Sample, reference_AA_pos) |>
+    summarise(
+      # take the first reference_AA to avoid duplicate rows for overlapping references (e.g. position 1677 in PX1)
+      reference_AA = first(reference_AA),
+      # collapse unique AA alleles seen for this positioning
+      AA = paste0(unique(AA), collapse = "/"),
+      .groups = "drop"
+    ) |>
+    mutate(
+      aa_id = paste0(
+        reference_AA,
+        reference_AA_pos,
+        ifelse(reference_AA != AA, AA, "")
+      ),
+      gene_pos = paste0(
+        gene, "_",
+        stringr::str_pad(reference_AA_pos, pad = "0", width = 3)
+      )
+    ) |>
+    select(Sample, gene_pos, aa_id) |>
+    tidyr::pivot_wider(
+      names_from = gene_pos,
+      values_from = aa_id
+    )
+}
+
+# CRT_df <- gene_results$CRT
+# PX1_df <- gene_results$PX1
+Kelch13_df <- gene_results$Kelch13
+
+kelch_remov_south <- Kelch13_df |> 
+  left_join(suppleme_fws, by = c("Sample")) |>
+  filter(!Country %in% c("Thailand","India","Myanmar")) |>
+  distinct(Sample, Kelch13_622)
+
+
+
+stopifnot(!anyDuplicated(kelch_remov_south$Sample))
+
+haplotypes <- sort(unique(kelch_remov_south$Kelch13_622))
+haplotype_colors <- setNames(
+  grDevices::hcl.colors(length(haplotypes), palette = "Dark 3"),
+  haplotypes
+)
+haplotype_colors["R622"] <- "#BDBDBD"
+
+itol_lines <- c(
+  "DATASET_COLORSTRIP",
+  "SEPARATOR TAB",
+  "DATASET_LABEL\tPX1 genotype",
+  "COLOR\t#000000",
+  "STRIP_WIDTH\t50",
+  "MARGIN\t5",
+  "BORDER_WIDTH\t0",
+  "SHOW_INTERNAL\t0",
+  "LEGEND_TITLE\tKelch13_622 genotype",
+  paste("LEGEND_SHAPES", paste(rep(1, length(haplotypes)), collapse = "\t"), sep = "\t"),
+  paste("LEGEND_COLORS", paste(haplotype_colors[haplotypes], collapse = "\t"), sep = "\t"),
+  paste("LEGEND_LABELS", paste(haplotypes, collapse = "\t"), sep = "\t"),
+  "DATA",
+  paste(
+    kelch_remov_south$Sample,
+    haplotype_colors[kelch_remov_south$Kelch13_622],
+    kelch_remov_south$Kelch13_622,
+    sep = "\t"
+  )
+)
+
+itol_output <- "output/px1_genotype_result/kelch_622_genotype_itol_colorstrip.txt"
+writeLines(itol_lines, itol_output)
+
+
+
+kelch_remov_south_675 <- Kelch13_df |> 
+  left_join(suppleme_fws, by = c("Sample")) |>
+  filter(
+    !Country %in% c("Thailand", "India", "Myanmar"),
+    !is.na(Kelch13_675)
+  ) |>
+  distinct(Sample, Kelch13_675)
+
+
+
+stopifnot(!anyDuplicated(kelch_remov_south_675$Sample))
+
+haplotypes <- sort(unique(kelch_remov_south_675$Kelch13_675))
+haplotype_colors <- setNames(
+  grDevices::hcl.colors(length(haplotypes), palette = "Dark 3"),
+  haplotypes
+)
+haplotype_colors["A675"] <- "#918a90"
+
+itol_lines <- c(
+  "DATASET_COLORSTRIP",
+  "SEPARATOR TAB",
+  "DATASET_LABEL\tKelch13_675 genotype",
+  "COLOR\t#000000",
+  "STRIP_WIDTH\t50",
+  "MARGIN\t5",
+  "BORDER_WIDTH\t0",
+  "SHOW_INTERNAL\t0",
+  "LEGEND_TITLE\tKelch13_675 genotype",
+  paste("LEGEND_SHAPES", paste(rep(1, length(haplotypes)), collapse = "\t"), sep = "\t"),
+  paste("LEGEND_COLORS", paste(haplotype_colors[haplotypes], collapse = "\t"), sep = "\t"),
+  paste("LEGEND_LABELS", paste(haplotypes, collapse = "\t"), sep = "\t"),
+  "DATA",
+  paste(
+    kelch_remov_south_675$Sample,
+    haplotype_colors[kelch_remov_south_675$Kelch13_675],
+    kelch_remov_south_675$Kelch13_675,
+    sep = "\t"
+  )
+)
+
+itol_output <- "output/px1_genotype_result/kelch_675_genotype_itol_colorstrip.txt"
+writeLines(itol_lines, itol_output)
+```
+```{r}
 create_dt(px1_target)
 ```
 ```{r}
 #| results: asis
 #| echo: false
 cat(createDownloadLink("output/px1_genotype_result/px1_genotype_result.tsv"))
+```
+
+```{r}
+library(tidyverse)
+library(patchwork)
+
+# The haplotype grid, built once and reused by CRT and K13.
+#
+# `split` is a metadata column -- country here. Haplotypes are defined across every sample that
+# is drawn, so one row is the same haplotype in both countries and the count panel shows how it
+# divides; that is what makes a shared haplotype distinguishable from a country-specific one.
+# `within` instead keeps only those countries and re-derives the haplotypes, which renumbers
+# them, so use it for a per-country figure rather than to compare the two.
+#
+# The returned patchwork carries the number of haplotype rows as an `n_hap` attribute, since the
+# page has to be tall enough for them.
+aa_hap_plot <- function(collapsed, meta, split = "country", within = NULL, colors = NULL) {
+  groups <- meta |>
+    transmute(sample, split_group = as.character(.data[[split]])) |>
+    distinct()
+
+  dat <- collapsed |>
+    ungroup() |>
+    left_join(groups, by = "sample") |>
+    # a sample with no metadata row is shown rather than dropped: losing it would quietly
+    # shrink the counts the bar panel reports
+    mutate(split_group = if_else(is.na(split_group), "unknown", split_group))
+
+  if (!is.null(within)) {
+    dat <- filter(dat, split_group %in% within)
+    if (!nrow(dat))
+      stop("no samples with ", split, " in ", paste(within, collapse = ", "), call. = FALSE)
+  }
+
+  pos_levels <- sort(unique(dat$reference_AA_pos))
+
+  # one haplotype string per sample (position:AA so missing positions can't silently align)
+  hap_by_sample <- dat |>
+    arrange(sample, reference_AA_pos) |>
+    group_by(sample, split_group) |>
+    summarise(haplotype = paste0(reference_AA_pos, ":", AA, collapse = "|"), .groups = "drop")
+
+  # rows are ordered by the total, so the most common haplotype stays on top however it splits
+  hap_totals <- hap_by_sample |>
+    count(haplotype, name = "n") |>
+    arrange(desc(n)) |>
+    mutate(hap_id = paste0("H", row_number()),
+           hap_lab = paste0(hap_id, " (n=", n, ")"))
+  hap_order <- rev(hap_totals$hap_lab)
+
+  lab <- function(d) mutate(d, hap_lab = factor(hap_lab, levels = hap_order))
+
+  hap_by_group <- hap_by_sample |>
+    count(haplotype, split_group, name = "n") |>
+    left_join(select(hap_totals, haplotype, hap_lab), by = "haplotype") |>
+    lab()
+
+  hap_long <- dat |>
+    left_join(select(hap_by_sample, sample, haplotype), by = "sample") |>
+    left_join(select(hap_totals, haplotype, hap_lab), by = "haplotype") |>
+    distinct(hap_lab, reference_AA_pos, reference_AA, AA) |>
+    mutate(reference_AA_pos = factor(reference_AA_pos, levels = pos_levels)) |>
+    lab()
+
+  # the package palette by default, so these match the other figures. `colors` overrides it;
+  # name it by level to hold a country to one colour across figures that draw different subsets,
+  # which an unnamed vector cannot do since it is read in the order of the levels present here
+  group_levels <- sort(unique(hap_by_group$split_group))
+  group_colors <- if (is.null(colors)) plasgenomicsutilsR::color_palette(length(group_levels)) else colors
+  if (is.null(names(group_colors))) {
+    group_colors <- rep_len(group_colors, length(group_levels))
+    names(group_colors) <- group_levels
+  }
+
+  p_grid <- ggplot(hap_long, aes(x = reference_AA_pos, y = hap_lab)) +
+    geom_label(aes(label = AA, fill = AA != reference_AA),
+               size = 3, linewidth = 0.2) +
+    scale_fill_manual(values = c(`FALSE` = "white", `TRUE` = "#FDD9A0"), guide = "none") +
+    theme_minimal() +
+    labs(x = "AA Position", y = "Haplotype")
+
+  p_bar <- ggplot(hap_by_group, aes(x = n, y = hap_lab, fill = split_group)) +
+    geom_col() +
+    # the label is the total, so it reads the same whether or not the bar is stacked
+    geom_text(data = lab(hap_totals), aes(x = n, y = hap_lab, label = n),
+              inherit.aes = FALSE, hjust = -0.25, size = 3) +
+    scale_fill_manual(values = group_colors) +
+    scale_x_continuous(expand = expansion(mult = c(0, 0.3))) +
+    theme_minimal() +
+    theme(axis.text.y = element_blank(),
+          axis.title.y = element_blank(),
+          panel.grid.major.y = element_blank()) +
+    labs(x = "N samples", fill = split)
+
+  # a one-level legend says nothing the title does not, so name the group instead
+  if (length(group_levels) < 2) {
+    p_bar <- p_bar + guides(fill = "none")
+    p <- p_grid + p_bar + plot_layout(widths = c(6, 1)) +
+      plot_annotation(title = paste(group_levels, collapse = ", "))
+  } else {
+    p <- p_grid + p_bar + plot_layout(widths = c(6, 1), guides = "collect")
+  }
+  attr(p, "n_hap") <- nrow(hap_totals)
+  p
+}
+
+# Per-country figures, sized from the combined one so the rows keep the same height.
+hap_plot_by_group <- function(collapsed, meta, prefix, width, per_row, split = "country",
+                              colors = NULL) {
+  # levels taken from the samples actually drawn, not from every row of the metadata, so a
+  # country with nothing in this gene's table is skipped instead of erroring
+  drawn <- filter(meta, sample %in% unique(collapsed$sample))
+  group_levels <- sort(unique(as.character(drawn[[split]])))
+  # fix the palette over every level up front, so a country is the same colour in its own
+  # figure as in the combined one -- left to itself each single-country plot would take the
+  # first colour of the palette
+  if (is.null(colors))
+    colors <- setNames(plasgenomicsutilsR::color_palette(length(group_levels)), group_levels)
+
+  for (g in group_levels) {
+    p <- aa_hap_plot(collapsed, meta, split = split, within = g, colors = colors)
+    cairo_pdf(paste0(prefix, "_", gsub("[^A-Za-z0-9]+", "_", g), ".pdf"),
+              width = width, height = max(4, per_row * attr(p, "n_hap")))
+    print(p)
+    dev.off()
+  }
+}
+
+```
+```{bash}
+# nextflow run /home/hathawan/hathaway/elucidatornf/pathweaver_extract_regions.nf --bams_dir /tank/data/plasmodium/falciparum/pfdata/bams/ --bams_file_ending .sorted.bam --outdir crt_regions_pw --genome_fnp /tank/data/genomes/plasmodium/genomes/pf/genomes/Pf3D7.fasta --pw_bed_fnp crt_regions_tandems_removed.bed --do_variant_calling --pw_samples_file Cambodia_Ghana_samples.txt --vc_variant_frequency_cut_off 0 --vc_variant_occurrence_cut_off 0 --pw_extract_region_assemblies_extra_args="--qualCheck 20"
+
+
+
+mkdir -p /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/output/seekdeep_crt
+conda activate nf-core
+cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/cram/
+nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/data/bed/crt_region.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/output/seekdeep_crt --bams_file_ending ".bam" --vc_variant_occurrence_cut_off 0 --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
+```
+
+```{r}
+suppleme_fws <- read.csv(
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/supplementary_Data/supp_fws_up.tsv",
+  sep = "\t"
+) %>%
+  select(sample_id, Country, fws) %>%
+  mutate(Sample = gsub("_S[0-9]+$", "", sample_id)) %>%
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+  mutate(sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+  select(sample, Country) |> 
+  dplyr::rename(country = Country) 
+sample_meta <- suppleme_fws
+crt_regions_pw_AAChangesInfo = readr::read_tsv("output/seekdeep_crt/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz") |>  mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+  mutate(Sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+  filter(AA_cnt > 0)
+
+min_within_sample_freq = 0.1
+
+crt_regions_pw_AAChangesInfo_collapse = crt_regions_pw_AAChangesInfo %>% 
+  filter(AA_freq >= min_within_sample_freq) |> 
+  group_by(Sample, reference_AA_pos, reference_AA) %>% 
+  arrange(desc(is_reference)) %>% 
+  summarise(AA = paste0(AA, collapse = "/"), .groups = "drop") |> 
+  filter(Sample %in% suppleme_fws$sample) |> 
+  dplyr::rename(sample = Sample)
+
+# drop samples called at fewer than this fraction of CRT positions
+min_pos_called_frac = 0.8
+
+n_crt_positions = n_distinct(crt_regions_pw_AAChangesInfo_collapse$reference_AA_pos)
+
+crt_sample_missingness = crt_regions_pw_AAChangesInfo_collapse |> 
+  group_by(sample) |> 
+  summarise(n_called = n_distinct(reference_AA_pos), .groups = "drop") |> 
+  mutate(frac_called = n_called / n_crt_positions,
+         frac_missing = 1 - frac_called)
+
+crt_regions_pw_AAChangesInfo_collapse = crt_regions_pw_AAChangesInfo_collapse |> 
+  semi_join(filter(crt_sample_missingness, frac_called >= min_pos_called_frac), by = "sample")
+
+crt_regions_pw_AAChangesInfo_collapse_sp = crt_regions_pw_AAChangesInfo_collapse %>% 
+  mutate(aa_id = paste0(reference_AA, reference_AA_pos, ifelse(reference_AA != AA, AA, ""))) %>% 
+  ungroup() %>% 
+  mutate(gene_pos = paste0("CRT_", stringr::str_pad(reference_AA_pos, pad = "0", width = 3))) %>% 
+  select(sample, gene_pos, aa_id) %>% 
+  spread(gene_pos, aa_id)
+
+pfcrt_hap_plot = aa_hap_plot(crt_regions_pw_AAChangesInfo_collapse, sample_meta)
+
+# the page has always been 30 inches for these rows; reuse that per-row height for the
+# per-country figures, which have fewer haplotypes
+pfcrt_hap_plot_per_row = 30 / attr(pfcrt_hap_plot, "n_hap")
+
+cairo_pdf("pfcrt_hap_plot.pdf", width = 15, height = 30)
+print(pfcrt_hap_plot)
+dev.off()
+
+hap_plot_by_group(crt_regions_pw_AAChangesInfo_collapse, sample_meta,
+                  prefix = "pfcrt_hap_plot_thr_80", width = 15, per_row = pfcrt_hap_plot_per_row)
+
+
 ```
