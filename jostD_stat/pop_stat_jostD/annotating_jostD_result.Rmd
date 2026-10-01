@@ -1,4 +1,4 @@
-
+### Annotating the jostD results 
 ```{r}
 library(dplyr)     # <- spelling was wrong (dplry ❌)
 library(tidyr)
@@ -174,7 +174,9 @@ print(colnames(jostd_ann_site))
 jostd_ann_site_filter <- jostd_ann_site%>%
   select(CHROM,pop1,pop2,JostD,Gene_name,POS)%>%
   filter(JostD > 0.5)
-print(unique(jostd_ann_site$pop1))
+# gene_filtering <- jostd_ann_site_filter%>%
+#   select(Gene_name)
+# print(unique(jostd_ann_site$pop1))
 
 jost_plot <- jostd_ann_site_filter %>%
   filter(CHROM != "Pf3D7_API_v3") %>%
@@ -218,6 +220,7 @@ jost_plot <- jost_plot %>%
 # First, identify genes that appear more than 4 times with Fst > 0.7
 # I tried to lower fst from 0.7 to 0.5 and 5 gene name count to 3
 high_jost_genes <- jost_plot %>%
+  group_by(CHROM)%>%
   filter(JostD > 0.7) %>%
   count(Gene_name) %>%
   filter(n >5) %>%
@@ -244,6 +247,14 @@ gene_regions <- data.frame(
             861001, 324334, 1983780, 876120),
   end = c(406341, 230713, 632681, 86436, 280332, 
           872925, 347119, 1996262, 886756),
+  stringsAsFactors = FALSE
+)
+
+gene_regions <- data.frame(
+  gene_name = c("PF3D7_0425400", "CRT", "PF3D7_0702000", "PF3D7_0705500","PF3D7_0818700", "PF3D7_1301900", "PF3D7_1408700","PF3D7_1448500"),
+  chr = c("Pf3D7_04_v3","Pf3D7_07_v3","Pf3D7_07_v3","Pf3D7_07_v3", "Pf3D7_08_v3","Pf3D7_13_v3","Pf3D7_14_v3","Pf3D7_14_v3"),
+  start = c(1143992 ,402385,83838 ,269635 ,847541, 109507,324334,1983780 ),
+  end = c(1144824 ,406341,86436 ,280332 ,854736 ,110463 ,347119,1996262 ),
   stringsAsFactors = FALSE
 )
 
@@ -329,7 +340,7 @@ fst_right <- jost_plot_filtered %>%
 # Filter for semicircles
 fst_semicircles <- jost_plot_filtered %>%
   filter(highlight != "Other")
-candidate_genes <- c("CRT", "FP2B", "UBP1","ABCF1","gene:PF3D7_0720700","AP2-O","AP2-G","HP1","GDV1")
+candidate_genes <- c("CRT", "FP2B", "UBP1","ABCF1","gene:PF3D7_0720700","AP2-O","AP2-G","HP1","GDV1","AP2-L")
 
 p <- ggplot(jost_plot_filtered, aes(x = x_pos, y = JostD)) +
   
@@ -413,16 +424,18 @@ scale_fill_manual(values = site_colors, name = "Filling: Population 1") +
     labels = chr_lengths$chr_num,
     expand = c(0.01, 0)
   ) +
-  scale_y_continuous(limits = c(0.5, 1)) +
+  scale_y_continuous(limits = c(0.5, 1.15)) +
   coord_cartesian(
     xlim = c(min(jost_plot_filtered$x_pos), max(jost_plot_filtered$x_pos)),
-    ylim = c(0.5, 1)
+    ylim = c(0.5, 1.15),
+    clip="off"
   ) +
-  labs(x = "Chromosome", y = "Fst Value") +
+  labs(x = "Chromosome", y = "JostD Value") +
   theme_minimal() +
   theme(
     axis.title = element_text(size = 13, face = "bold"),
-    axis.text.x = element_text(size = 10),
+    axis.text.x = element_text(size = 15, face = "bold"),
+    axis.text.y = element_text(size = 15, face = "bold"),
     legend.position = "bottom",
     legend.title = element_text(size = 11, face = "bold"),
     panel.grid.major.x = element_blank(),
@@ -435,12 +448,13 @@ geom_text_repel(
   data = gene_regions_with_pos,
   aes(
     x = (x_start + x_end)/2,
-    y = 0.98,
+    y = 1.02,
     label = gene_name
   ),
   size = 3,
   fontface = "bold",
-  angle = 45
+  angle = 60,
+  direction = "both"
 )
 #   geom_text_repel(
 #   data = jost_plot_filtered %>% filter(Gene_name %in% high_jost_genes),
@@ -452,7 +466,8 @@ geom_text_repel(
 # targets which are not annotated might be the one which have PF3D7 prefix and i just remove those
 print(p)
 
-ggsave("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/jostD_stat/pop_stat_jostD/JostD_district.pdf", plot = p, width = 12, height = 6)
+ggsave("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/jostD_stat/pop_stat_jostD/JostD_district.pdf", plot = p, width = 15, height = 10)
+
 ```
 
 

@@ -149,9 +149,9 @@ freq_df = pd.DataFrame({
 # ---------------------------
 # Save outputs
 # ---------------------------
-geno_out = "target_positions_genotypes_px1.csv"
-freq_out = "target_positions_frequencies_px1.csv"
-geno_df.to_csv("target_wide_format_px1.csv")
+geno_out = "target_positions_genotypes_k13_675.csv"
+freq_out = "target_positions_frequencies_k13_675.csv"
+geno_df.to_csv("target_wide_format_k13_675.csv")
 
 geno_long = geno_df.melt(
     id_vars="sample",

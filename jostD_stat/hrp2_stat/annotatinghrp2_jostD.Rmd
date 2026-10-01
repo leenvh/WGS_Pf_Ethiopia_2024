@@ -151,7 +151,7 @@ dev.off()
 
 ```
 
-# doing the manhattan plot for the jostD result through replicating the one Leen do for the fst 
+# doing the  plot for the jostD result through replicating the one Leen do for the fst 
 
 ```{r}
 library(ggplot2)
@@ -400,91 +400,3 @@ print(p)
 ggsave("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/jostD_stat/hrp2_stat/JostD_wild_mutant_plot.pdf", plot = p, width = 12, height = 6)
 ```
 
-
-```{r}
-library(dplyr)
-library(ggplot2)
-library(ggrepel)
-
-# ---- 1. Prepare data ----
-fst_plot <- jostd_ann_hrp %>%
-  filter(CHROM != "Pf3D7_API_v3") %>%
-  mutate(chr_num = as.numeric(gsub("Pf3D7_|_v3", "", CHROM))) %>%
-  arrange(chr_num, POS)
-
-# ---- 2. Cumulative genomic position ----
-chr_info <- fst_plot %>%
-  group_by(chr_num) %>%
-  summarise(chr_len = max(POS), .groups = "drop") %>%
-  mutate(offset = lag(cumsum(chr_len), default = 0),
-         center = offset + chr_len/2)
-
-fst_plot <- fst_plot %>%
-  left_join(chr_info, by = "chr_num") %>%
-  mutate(x_pos = POS + offset)
-
-# ---- 3. Adaptive threshold (Top 1%) ----
-threshold <- quantile(fst_plot$JostD, 0.99, na.rm = TRUE)
-
-# Identify extreme variants
-extreme_variants <- fst_plot %>%
-  filter(JostD >= threshold)
-
-# Genes enriched for extreme differentiation
-high_genes <- extreme_variants %>%
-  count(Gene_name) %>%
-  filter(n >= 3) %>%     # at least 3 extreme variants per gene
-  pull(Gene_name)
-
-# Mark highlight category
-fst_plot <- fst_plot %>%
-  mutate(highlight = ifelse(Gene_name %in% high_genes & 
-                            JostD >= threshold,
-                            Gene_name, "Other"))
-
-# ---- 4. Plot ----
-p <- ggplot(fst_plot, aes(x = x_pos, y = JostD)) +
-  
-  # Background points
-  geom_point(aes(color = factor(chr_num)),
-             alpha = 0.5, size = 1.3) +
-  
-  # Extreme variants
-  geom_point(
-    data = fst_plot %>% filter(highlight != "Other"),
-    color = "red", size = 2.3
-  ) +
-  
-  # Threshold line
-  geom_hline(yintercept = threshold,
-             linetype = "dashed", color = "black") +
-  
-  # Chromosome labels
-  scale_x_continuous(
-    breaks = chr_info$center,
-    labels = chr_info$chr_num
-  ) +
-  
-  labs(
-    x = "Chromosome",
-    y = "Jost's D",
-    title = "Genome-wide Population Differentiation",
-    subtitle = paste0("Top 1% threshold = ", round(threshold, 3))
-  ) +
-  
-  theme_minimal() +
-  theme(
-    legend.position = "none",
-    panel.grid.major.x = element_blank()
-  ) +
-  
-  # Label candidate genes
-  geom_text_repel(
-    data = fst_plot %>% filter(Gene_name %in% high_genes),
-    aes(label = Gene_name),
-    size = 3,
-    max.overlaps = 50
-  )
-
-print(p)
-```

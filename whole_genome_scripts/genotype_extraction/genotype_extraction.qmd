@@ -27,6 +27,14 @@ library(tidyr)
 library(purrr)
 
 # I need to update the strand for each gene and also add additional targets
+px1_bed <- data.frame(
+  chr = "Pf3D7_07_v3",
+  start = c(895770, 897207),
+  end = c(895975, 897424),
+  chr_pos = c("Pf3D7_07_v3-895770-895975", "Pf3D7_07_v3-897207-897424"),
+  length = c(205, 217),
+  strand = c("+", "+")
+)
 regions <- data.frame(
   name = c(
     "AP2MU",
@@ -42,7 +50,9 @@ regions <- data.frame(
     "KIC7",
     "KIC5",
     "KIC8",
-    "PX1"
+    # "PX1",
+    "UBP1",
+    "PFCARL"
   ),
   coord = c(
     "Pf3D7_12_v3:716700-720700",
@@ -58,7 +68,10 @@ regions <- data.frame(
     "Pf3D7_08_v3:643066-645158",
     "Pf3D7_11_v3:1525654-1532527",
     "Pf3D7_10_v3:600950-608809",
-    "Pf3D7_07_v3:889883-899213"
+    # "Pf3D7_07_v3:889883-899213",
+    "Pf3D7_01_v3:188420-201324",
+    "Pf3D7_03_v3:921776-928618"
+
   ),
   strand = c(
     "+",
@@ -74,9 +87,10 @@ regions <- data.frame(
     "-",
     "-",
     "-",
+    "+",
     "+"
   )
-)
+) 
 
 bed_windows <- regions %>%
   separate(coord, into = c("chr", "pos"), sep = ":") %>%
@@ -102,10 +116,11 @@ bed_windows <- regions %>%
   mutate(length = end - start) %>%
   mutate(length = as.integer(length)) %>%
   filter(length > 50) %>%
-  select(chr, start, end, chr_pos, length, strand)
+  select(chr, start, end, chr_pos, length, strand)%>%
+  bind_rows(px1_bed)
 write.table(
   bed_windows %>% select(chr, start, end, chr_pos, length, strand),
-  "/mnt/storage13/ahri/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_additional.bed",
+  "/mnt/storage13/ahri/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_px1_carl_additional.bed",
   sep = "\t",
   quote = FALSE,
   row.names = FALSE,
@@ -129,10 +144,10 @@ write.table(
 ```
 ```{bash,eval=F}
 # including mca2, kic7, kic5, kic8 and full px1 target this targets for the whole genome variant extraction and use this path for the bed file /mnt/storage13/ahri/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_additional.bed
-mkdir -p /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu_mca_kic
+mkdir -p /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu_mca_kic_px1_carl
 conda activate nf-core
 cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/cram/
-nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_px1_additional.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu_mca_kic --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
+nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/hrp2_analysis/bed_file/aat1_ap2mu_co_fer_px1_carl_additional.bed   --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu_mca_kic_px1_carl --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
 ```
 ```{r,eval=F}
 library(dplyr)
@@ -153,7 +168,10 @@ suppleme_fws <- read.csv(
 seekdeep_output_additional <- read.csv(
   "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu_mca_kic/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz",
   sep = "\t"
-) %>%
+)
+# to see the px1 and the carl gene
+seekdeep_output_additional <- read.csv(  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/genotype_extraction/seekdeep_output/pathweaveroutput_aat1_ap2mu_mca_kic_px1_carl/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz",
+  sep = "\t") %>%
   mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
   mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
   mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
@@ -488,7 +506,11 @@ regions <- data.frame(
     "KIC7",
     "KIC5",
     "KIC8",
-    "PfCARL"
+    "PfCARL",
+    "UBP1",
+    "pfact",
+    "pfugt"
+
   ),
   coord = c(
     "Pf3D7_12_v3:716700-720700",
@@ -504,7 +526,13 @@ regions <- data.frame(
     "Pf3D7_08_v3:643066-645158",
     "Pf3D7_11_v3:1525654-1532527",
     "Pf3D7_10_v3:600950-608809",
-    "Pf3D7_03_v3:921776-928618"
+    "Pf3D7_03_v3:921776-928618",
+    "Pf3D7_01_v3:188420-201324",
+    "Pf3D7_10_v3:1447919-1451772",
+    "Pf3D7_11_v3:518688-520690"
+
+
+
   ),
   strand = c(
     "+",
@@ -520,9 +548,13 @@ regions <- data.frame(
     "-",
     "-",
     "-",
+    "+",
+    "+",
+    "-",
     "+"
   )
 )
+
 px1_bed <- data.frame(
   chr = "Pf3D7_07_v3",
   start = c(895770, 897207),
@@ -634,7 +666,7 @@ seekdeep_output_tes_1 <- read.csv(
     AA_cnt
   ) %>%
   dplyr::rename(Read = AA_cnt)
-print(colnames(seekdeep_output_tes))
+print(colnames(seekdeep_output_tes_1))
 
 wide_sample_tes <- seekdeep_output_tes_1 %>%
   mutate(
@@ -695,7 +727,7 @@ library(viridis)
 
 
 
-my_plot <- ggplot(allele_freq, aes(Treatment, mutation_test, fill = mutant_samples)) +
+my_plot <- ggplot(allele_freq %>% filter(Gene == "PX1"), aes(Treatment, mutation_test, fill = mutant_samples)) +
 
   geom_tile(color = "grey95") +
 
@@ -721,7 +753,7 @@ my_plot <- ggplot(allele_freq, aes(Treatment, mutation_test, fill = mutant_sampl
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
 
-ggsave(filename = "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/tes_allgenotype_report_plot.pdf", 
+ggsave(filename = "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/tes_allgenotype_report_plot_additional_targets.pdf", 
        plot = my_plot, 
        width = 10, 
        height = 10, 
@@ -899,4 +931,378 @@ ggsave(
   width = 16,
   height = 12
 )
+```
+
+ploting for UBP1
+```{r}
+upp1_plot <- ggplot(allele_freq%>%filter(Gene == "UBP1"), aes(Treatment, mutation_test, fill = mutant_samples)) +
+
+  geom_tile(color = "grey95") +
+
+  geom_text(aes(label = mutant_samples), size = 3, color = "white") +
+
+  facet_wrap(~Gene, scales = "free_y") +
+
+  scale_fill_viridis_c(option = "D") +
+
+  labs(
+    title = "Allele Frequency by Gene",
+    x = "",
+    y = "Mutation",
+    fill = "Mutant\nSamples"
+  ) +
+
+  theme_bw() +
+
+  theme(
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold"),
+    axis.text.y = element_text(size = 6),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+ggsave(
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/UBP1_haplotype_plots.pdf",
+  upp1_plot,
+  width = 16,
+  height = 12
+)
+```
+
+Nick suggested bed file for the px1 target
+```{r}
+px1_bed_new <- data.frame(
+  chr = "Pf3D7_07_v3",
+  start = c(895847, 897170),
+  end = c(895931, 897388),
+  chr_pos = c("Pf3D7_07_v3-895847-895931", "Pf3D7_07_v3-897170-897388"),
+  length = c(84, 218),
+  strand = c("+", "+")
+)
+
+write.table(
+  px1_bed_new %>% select(chr, start, end, chr_pos, length, strand),
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/input/px1_target_bed_new.bed",
+  sep = "\t",
+  quote = FALSE,
+  row.names = FALSE,
+  col.names = FALSE
+)
+```
+
+```{bash}
+mkdir -p /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/output
+conda activate nf-core
+cd /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/Tes_all_samples
+
+nextflow run /mnt/storage13/ahri/hrp2_analysis/elucidatornf/pathweaver_extract_regions.nf --bams_dir ./ --pw_bed_fnp /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/input/px1_target_bed_new.bed --genome_fnp /mnt/storage13/ahri/hrp2_analysis/pf_genomes/genomes/Pf3D7.fasta --outdir /mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/output --bams_file_ending ".bam" --pw_extract_region_assemblies_extra_args="--qualCheck 20" -profile apptainer -resume --do_variant_calling
+
+```
+
+
+```{r}
+failed_samples <- data.frame(
+  sample = c("AC091_D21", "AC091_TF", "MM021_D0", "GM045_D21", "MM086_D21")
+)
+
+metadata_tes <- read.csv(
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/pfalciparum_09_24_v2/Tes_all_samples/metadata.tsv",
+  sep = "\t"
+) %>%
+  mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+  mutate(Sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+  mutate(Sample = gsub("-", "_", Sample)) %>%
+  select(-sample)
+seekdeep_output_tes_1 <- read.csv(
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/output/PathWeaverResults/variantCalls/reports/summary/AAChangesInfo.tsv.gz",
+  sep = "\t"
+) %>%
+  mutate(Sample = gsub("_S[0-9]+$", "", sample)) %>%
+  mutate(Sample = gsub("-D0", "_D0", Sample)) %>%
+  mutate(Sample = gsub("NG-A4488_", "", Sample)) %>%
+  mutate(Sample = gsub("_libLAN[0-9]+", "", Sample)) %>%
+  mutate(Sample = gsub("-", "_", Sample)) %>%
+  #right_join(metadata_tes, by = "Sample")%>%
+  mutate(Gene = recode(Gene, "PF3D7_1251200" = "Coronin")) %>%
+  # filter(Gene %in% c("Coronin","PX1","AAT1","AP2-MU","UBP1","Kelch13","CRT","PPPK-DHPS","DHFR-TS","MDR1","PFcarl"))%>%
+  filter(AA_cnt != 0) %>%
+  select(
+    Sample,
+    Gene,
+    Gene_ID,
+    reference_AA_pos,
+    reference_AA,
+    AA,
+    is_reference,
+    AA_freq,
+    AA_cnt
+  ) %>%
+  dplyr::rename(Read = AA_cnt)
+print(colnames(seekdeep_output_tes_1))
+
+wide_sample_tes <- seekdeep_output_tes_1 %>%
+  mutate(
+    mutation_status = ifelse(reference_AA == AA, "wildtype", "mutant"),
+    mutation_test = ifelse(
+      reference_AA == AA,
+      paste0("0", "(", AA_freq, ")"),
+      paste0(reference_AA, reference_AA_pos, AA, "(", AA_freq, ")")
+    )
+  ) %>%
+  select(Sample, Gene, reference_AA_pos, mutation_test) %>%
+  group_by(Gene, reference_AA_pos, Sample) %>%
+  summarise(
+    mutation_test = paste(unique(mutation_test), collapse = ";"),
+    .groups = "drop"
+  ) %>%
+    
+  # pivot_wider(
+  #   names_from = Sample,
+  #   values_from = mutation_test,
+  #   values_fill = "NA"
+  # )
+  filter(!Sample %in% failed_samples$sample) %>%
+  left_join(metadata_tes, by = "Sample")
+
+
+totals <- wide_sample_tes %>%
+  group_by(Treatment) %>%
+  summarise(total_samples = n_distinct(Sample))
+
+# Mutation frequencies
+allele_freq <- wide_sample_tes %>%
+  group_by(Treatment, Gene, reference_AA_pos, mutation_test) %>%
+  summarise(mutant_samples = n_distinct(Sample), .groups = "drop") %>%
+  left_join(totals, by = "Treatment") %>%
+  mutate(allele_frequency = mutant_samples / total_samples) %>%
+  filter(mutation_test != "0(1)", allele_frequency > 0.1)
+
+
+library(ggplot2)
+
+ggplot(
+allele_freq %>% filter(Gene == "PX1",
+reference_AA_pos %in% c("1222", "1701", "1705")),
+aes(
+  x = Treatment,
+ y = mutation_test,
+ size = mutant_samples,
+  color = mutant_samples ) ) +
+ geom_point(alpha = 0.8) +
+  scale_color_viridis_c() +
+  theme_minimal()
+
+
+library(viridis)
+
+
+
+
+
+my_plot_new <- ggplot(allele_freq %>% filter(Gene != "UBP1"), aes(Treatment, mutation_test, fill = mutant_samples)) +
+
+  geom_tile(color = "grey95") +
+
+  geom_text(aes(label = mutant_samples), size = 3, color = "white") +
+
+  facet_wrap(~Gene, scales = "free_y") +
+
+  scale_fill_viridis_c(option = "D") +
+
+  labs(
+    title = "Allele Frequency by Gene",
+    x = "",
+    y = "Mutation",
+    fill = "Mutant\nSamples"
+  ) +
+
+  theme_bw() +
+
+  theme(
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold"),
+    axis.text.y = element_text(size = 6),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+ggsave(filename = "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/figure/px1_updated_result.pdf", 
+       plot = my_plot_new, 
+       width = 10, 
+       height = 10, 
+       units = "in", 
+       dpi = 300)
+
+```
+
+```{r}
+px1_target <- wide_sample_tes%>%
+  filter(Gene == "PX1", reference_AA_pos %in% c("1222", "1701", "1705")) %>%
+  select(Sample, Gene, reference_AA_pos, mutation_test, Treatment) %>%
+  # pivot_wider(names_from = reference_AA_pos, values_from = mutation_test) %>%
+  mutate(
+    mutation = case_when(
+      grepl("D1705N", mutation_test) ~ "D1705N",
+      grepl("1222", mutation_test) ~ "L1705P",
+      grepl("1701", mutation_test) ~ "M1701I",
+      TRUE ~ "WT"
+    )
+  )%>%
+  select(-mutation_test)%>%
+  pivot_wider(names_from = reference_AA_pos, values_from = mutation) %>%
+
+  mutate(haplotype = paste(`1222`, `1701`, `1705`, sep = "/")) %>%
+  select(Sample, haplotype, Treatment)%>%
+  left_join(totals, by = "Treatment") %>%
+  group_by(Treatment, haplotype,total_samples) %>%
+  summarise(count = n(), .groups = "drop")%>%
+  mutate(freq = count / total_samples)
+
+library(ggplot2)
+library(viridis)
+library(scales)
+
+# Consistent treatment colors
+treat_cols <- c(
+  Ts  = "#009E73",   # Green
+  Tf0 = "#E69F00",   # Orange
+  Tf  = "#0072B2"    # Blue
+)
+
+
+p1 <- ggplot(px1_target,
+       aes(x = Treatment,
+           y = reorder(haplotype, freq),
+           fill = freq)) +
+
+  geom_tile(color = "white", linewidth = 0.4) +
+
+  geom_text(aes(label = count),
+            color = "blue",
+            fontface = "bold",
+            size = 4) +
+
+  scale_fill_viridis_c(
+    option = "inferno",
+    name = "Frequency"  ) +
+
+  labs(
+    title = "PX1 Haplotype Frequencies",
+    x = "Treatment",
+    y = "Haplotype"
+  ) +
+
+  theme_bw(base_size = 14) +
+
+  theme(
+    panel.grid = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.x = element_text(face = "bold"),
+    axis.text.y = element_text(size = 9),
+    legend.title = element_text(face = "bold")
+  )
+
+
+p2 <- ggplot(px1_target,
+       aes(Treatment, haplotype)) +
+
+  geom_point(aes(size = count,
+                 fill = Treatment),
+             shape = 21,
+             color = "black",
+             stroke = 0.3,
+             alpha = 0.9) +
+
+  geom_text(aes(label = count),
+            color = "white",
+            fontface = "bold",
+            size = 3.8) +
+
+  scale_fill_manual(values = treat_cols) +
+
+  scale_size_continuous(
+    range = c(5, 18),
+    name = "Count"
+  ) +
+
+  labs(
+    title = "PX1 Haplotype Counts",
+    x = "Treatment",
+    y = "Haplotype",
+    fill = "Treatment"
+  ) +
+
+  theme_classic(base_size = 14) +
+
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.x = element_text(face = "bold"),
+    axis.text.y = element_text(size = 9),
+    legend.title = element_text(face = "bold")
+  )
+
+p3 <- ggplot(px1_target,
+       aes(haplotype,
+           freq,
+           fill = Treatment)) +
+
+  geom_col(position = position_dodge(width = 0.8),
+           width = 0.7,
+           color = "black",
+           linewidth = 0.2) +
+
+  geom_text(aes(label = count),
+            position = position_dodge(width = 0.8),
+            vjust = -0.3,
+            size = 3.8,
+            fontface = "bold") +
+
+  scale_fill_manual(values = treat_cols) +
+
+  scale_y_continuous(
+    labels = percent_format(accuracy = 1),
+    expand = expansion(mult = c(0, 0.08))
+  ) +
+
+  labs(
+    title = "PX1 Haplotype Frequencies",
+    x = "Haplotype",
+    y = "Frequency",
+    fill = "Treatment"
+  ) +
+
+  theme_bw(base_size = 14) +
+
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.text.x = element_text(angle = 45,
+                               hjust = 1,
+                               face = "bold"),
+    legend.title = element_text(face = "bold")
+  )
+
+library(patchwork)
+
+combined_plot <- (p1 | p2) /
+                 p3 +
+  plot_annotation(
+    title = "PX1 Haplotype Analysis",
+    theme = theme(
+      plot.title = element_text(size = 18,
+                                face = "bold",
+                                hjust = 0.5)
+    )
+  )
+
+combined_plot
+
+ggsave(
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/Tes_genotype_extraction/figure/PX1_haplotype_plots.pdf",
+  combined_plot,
+  width = 16,
+  height = 12
+)
+
 ```

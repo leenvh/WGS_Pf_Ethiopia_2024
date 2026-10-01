@@ -16,8 +16,10 @@ cat hrp_status.txt | xargs -I {} -P 2 sh -c 'Rscript ~/software/malaria-hub/ibd/
 ```
 
 # there was some warning messages
-# ~/software/hmmIBD/hmmIBD -i hrp_status/hmmIBD_hrp3_only_maf0.01.txt -o hrp_status/hmmIBD_hrp3_only_maf0.01_out 
-# i just run this manually for each group due to the warning  
+```{bash}
+ ~/software/hmmIBD/hmmIBD -i hrp_status/hmmIBD_hrp3_only_maf0.01.txt -o hrp_status/hmmIBD_hrp3_only_maf0.01_out 
+ ```
+#i just run this manually for each group due to the warning  
 
 
 
@@ -86,3 +88,8 @@ python -m jcvi.graphics.chromosome output_mutant.bed \
     --size=pf.sizes --title="Ethiopia_newly_sequenced-high_IBD_regions_hrp_mutant" --gauge
 
 ```
+
+```{r}
+mutant_hmmibd <- read.csv("/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/hmmIBD/hrp_status/mutant_01_03_2026_hmmIBD_ibd_win10kb_annotated_q0.95.tsv",sep="\t")
+```
+

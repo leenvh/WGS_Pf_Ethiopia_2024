@@ -20,7 +20,7 @@ library(readr)
 library(tidyverse)
 
 
-k13_binary_matrix <- read.table("//wsl.localhost/Ubuntu-24.04/home/metmiku/Leucodepleted/whole-genome-sequence-analysis/haplotype/gonder/072025_pf_mgen_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia_gonder_k13flanking.mat.bin",header = TRUE) %>% 
+k13_binary_matrix <- read.table("/mnt/storage13/ahri/popgen_ethiopia_WGS/haplotype/gonder/072025_pf_mgen_ethiopia_popgen.filt.csq.bi.GT.miss0.2.vqslod.filt.snps_ethiopia_gonder_k13flanking.mat.bin",header = TRUE) %>% 
   select(-c(chr,ref))
 k13_binary_matrix[is.na(k13_binary_matrix)] <- 0
 df_matrix <- as.matrix(k13_binary_matrix)
@@ -59,7 +59,7 @@ full_data_mat = as.matrix(full_data[,2:ncol(full_data)])
 rownames(full_data_mat) = full_data$sample
 
 metadata_1 <- as.data.frame(full_data$sample) %>% 
-  rename("sample"="full_data$sample") %>% 
+  dplyr:::rename("sample"="full_data$sample") %>% 
   mutate(site = case_when(
     grepl("GM",full_data$sample) ~ "Gondar",
     TRUE ~ "unknown"
@@ -144,10 +144,11 @@ ht <- Heatmap(
   )
 )
 
+print(ht)
 # Save the heatmap
-png("C:/Users/Admin/Desktop/Leukodeplate_WGS/haplotype/622I_test_using_r_name.png", width = 30, height = 10, units = "in", res = 500)
-draw(ht)
-dev.off()
+# png("C:/Users/Admin/Desktop/Leukodeplate_WGS/haplotype/622I_test_using_r_name.png", width = 30, height = 10, units = "in", res = 500)
+# draw(ht)
+# dev.off()
 # Example with Manhattan distance (similar to your custom function)
 
 ```
