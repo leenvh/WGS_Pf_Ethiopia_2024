@@ -1,0 +1,18 @@
+#chrom	start	end	name	score	strand	transcriptID	AAStart-1based	AAEnd-1based	GeneDescription	Name	description
+Pf3D7_07_v3	402468	402602	Pf3D7_07_v3-402468-402602-for	134	+	PF3D7_0709000.1	4294967295	4294967295	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	402689	402895	Pf3D7_07_v3-402689-402895-for	206	+	PF3D7_0709000.1	4294967295	4294967295	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	403016	403373	Pf3D7_07_v3-403016-403373-for	357	+	PF3D7_0709000.1	1	31	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	403470	403833	Pf3D7_07_v3-403470-403833-for	363	+	PF3D7_0709000.1	31	120	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	403889	404133	Pf3D7_07_v3-403889-404133-for	244	+	PF3D7_0709000.1	121	178	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	404271	404428	Pf3D7_07_v3-404271-404428-for	157	+	PF3D7_0709000.1	178	222	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	404468	404534	Pf3D7_07_v3-404468-404534-for	66	+	PF3D7_0709000.1	4294967295	4294967295	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	404551	404702	Pf3D7_07_v3-404551-404702-for	151	+	PF3D7_0709000.1	223	246	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	404715	404887	Pf3D7_07_v3-404715-404887-for	172	+	PF3D7_0709000.1	247	272	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	404907	405113	Pf3D7_07_v3-404907-405113-for	206	+	PF3D7_0709000.1	272	299	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	405127	405273	Pf3D7_07_v3-405127-405273-for	146	+	PF3D7_0709000.1	300	316	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	405332	405464	Pf3D7_07_v3-405332-405464-for	132	+	PF3D7_0709000.1	317	335	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	405500	405645	Pf3D7_07_v3-405500-405645-for	145	+	PF3D7_0709000.1	336	366	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	405726	405893	Pf3D7_07_v3-405726-405893-for	167	+	PF3D7_0709000.1	367	381	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	405911	405980	Pf3D7_07_v3-405911-405980-for	69	+	PF3D7_0709000.1	4294967295	4294967295	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	406012	406139	Pf3D7_07_v3-406012-406139-for	127	+	PF3D7_0709000.1	382	400	chloroquine resistance transporter	CRT	chloroquine resistance transporter
+Pf3D7_07_v3	406165	406327	Pf3D7_07_v3-406165-406327-for	162	+	PF3D7_0709000.1	400	425	chloroquine resistance transporter	CRT	chloroquine resistance transporter
