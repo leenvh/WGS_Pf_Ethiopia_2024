@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Render IBD report (HaplotypR)",
+      "type": "shell",
+      "command": "conda run -n HaplotypR --no-capture-output quarto render ibd_specific_regions.qmd --to html",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
