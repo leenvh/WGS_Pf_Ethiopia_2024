@@ -173,7 +173,7 @@ which R
 # remotes::install_github("nickjhathaway/plasgenomicsutilsR")
 library(plasgenomicsutilsR)
 library(dplyr, help, pos = 2, lib.loc = NULL)
-library(tidyverse)
+library(tidyr)
 library(ggraph, help, pos = 2, lib.loc = NULL)
 library(ggplot2)
 
@@ -199,6 +199,22 @@ hrp_status_metadata <- hrp_status_metadata %>%
   label_ungenotyped() |> 
   # compound column used for the "Site_cviet" shape grouping below
   mutate(Site_cviet = paste(Site, cviet_group, sep = " - "))
+
+k13_poly_remove <- hrp_status_metadata |> 
+  filter(Kelch13_622 != "R622R/I")
+Ethiopia_ibd_results_poly_kelch622remo <- ibd_results(
+  blocks          = file.path("render_inputs/ethiopia/Ethiopia_hmm.hmm.txt"),
+  pair_fraction   = file.path("render_inputs/ethiopia/Ethiopia_ibd_fraction.pair_ibd_fraction.tsv.gz"),
+  meta            = k13_poly_remove,
+  genes           = PF_EXAMPLE_DRUG_GENES,   # pfcrt, pfdhfr, pfmdr1, pfdhps, pfkelch13, pfaat1, pfgch1, pfpx1
+  reference       = "pf3d7"
+)
+Ethiopia_pfkelch13_ibd_plot_kelch_mutation_hap_poly_remove = Ethiopia_ibd_results_poly_kelch622remo$plot_ibd_network(gene = "pfkelch13", 
+                                                          sharing = "complete", 
+                                                          shape_group = "Country",
+                                                          color_group = "Kelch13_622",
+                                                          include_isolated = T)
+save_plot("figures/Ethiopia_pfkelch13_Kelch13_622_poly_remove_ibd_plot.pdf", Ethiopia_pfkelch13_ibd_plot_kelch_mutation_hap_poly_remove)
 
 
 Ethiopia_ibd_results <- ibd_results(
@@ -517,6 +533,26 @@ eth_eri_metadata <- supp_fws_up %>%
   left_join(CRT_mutant_only, by = c("sample" = "Sample")) |> 
   left_join(PX1_mutant_only, by = c("sample" = "Sample")) |> 
   label_ungenotyped()
+kelch_poly_remove <- eth_eri_metadata |> 
+  filter(Kelch13_622 != "R622R/I")
+eth_eri_metadata_poly_remove <- ibd_results(
+  blocks          = file.path("render_inputs/ethiopia_eritrea/eth_eri_hmm.hmm.txt"),
+  pair_fraction   = file.path("render_inputs/ethiopia_eritrea/eth_eri_ibd_fraction.pair_ibd_fraction.tsv.gz"),
+  meta            = kelch_poly_remove,
+  genes           = PF_EXAMPLE_DRUG_GENES,
+  reference       = "pf3d7"
+)
+if ("Kelch13_622" %in% colnames(kelch_poly_remove)) {
+  Eth_Eri_kelch_plot_poly_remove <- eth_eri_metadata_poly_remove$plot_ibd_network(
+    gene = "pfkelch13", 
+    sharing = "complete", 
+    shape_group = "Country",
+    color_group = "Kelch13_622",
+    include_isolated = TRUE
+  )
+  save_plot("ibd_specific_regions/figures_ethiopia_eritrea/Eth_Eri_pfkelch13_poly_removed_ibd_plot.pdf", Eth_Eri_kelch_plot_poly_remove)
+}
+
 
 # Instantiate IBD Results for Eth/Eri merged dataset
 Eth_Eri_ibd_results <- ibd_results(
