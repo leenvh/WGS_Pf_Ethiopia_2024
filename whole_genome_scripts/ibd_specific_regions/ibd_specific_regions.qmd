@@ -548,7 +548,8 @@ if ("Kelch13_622" %in% colnames(kelch_poly_remove)) {
     sharing = "complete", 
     shape_group = "Country",
     color_group = "Kelch13_622",
-    include_isolated = TRUE
+    include_isolated = TRUE,
+    spread = 2
   )
   save_plot("ibd_specific_regions/figures_ethiopia_eritrea/Eth_Eri_pfkelch13_poly_removed_ibd_plot.pdf", Eth_Eri_kelch_plot_poly_remove)
 }
