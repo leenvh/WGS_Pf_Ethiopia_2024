@@ -68,7 +68,9 @@ hrp_status_metadata <- read_tsv("render_inputs/shared/metadata_ethiopia.tsv")
 
 px1_genotype_result <- read_tsv("render_inputs/shared/px1_genotype_result.tsv") |> 
   select(Sample,"384",haplotype)
-seekdeep_result <- read_tsv("render_inputs/shared/seekdeep_results.tsv.gz")
+seekdeep_result <- read_tsv("render_inputs/shared/seekdeep_results_updated.tsv.gz") |> 
+  filter(!(Gene == "Kelch13" & reference_AA_pos %in% c("142","143","255","441")))  
+
 
 genes <- c("CRT", "PX1","Kelch13")
 
@@ -160,6 +162,12 @@ PX1_mutant_only <- seekdeep_result |>
 hap_cols <- c("k13_mutation_hap", "crt_mutation_hap", "px1_mutation_hap")
 label_ungenotyped <- function(df) {
   dplyr::mutate(df, dplyr::across(dplyr::any_of(hap_cols), ~ tidyr::replace_na(.x, "NA")))
+}
+
+save_plot <- function(path, ...) {
+  path <- sub("^ibd_specific_regions/", "", path)
+  dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
+  plasgenomicsutilsR::save_plot(path, ...)
 }
 ```
 
@@ -277,7 +285,7 @@ Ethiopia_pfkelch13_ibd_plot_kelch_mutation_hap = Ethiopia_ibd_results$plot_ibd_n
                                                           shape_group = "Country",
                                                           color_group = "k13_mutation_hap",
                                                           include_isolated = T)
-save_plot("ibd_specific_regions/figures/Ethiopia_pfkelch13_kelch_mutation_hap_ibd_plot.pdf", Ethiopia_pfkelch13_ibd_plot_kelch_mutation_hap)
+save_plot("ibd_specific_regions/figures/Ethiopia_pfkelch13_kelch_mutation_hap_ibd_plot_update.pdf", Ethiopia_pfkelch13_ibd_plot_kelch_mutation_hap)
 
 Ethiopia_pfkelch13_polyclonal_ibd_plot = Ethiopia_ibd_results$plot_ibd_network(gene = "pfkelch13", 
                                                           sharing = "complete", 
@@ -519,8 +527,42 @@ library(dplyr)
 library(tidyverse)
 library(ggraph)
 library(ggplot2)
+library(dplyr)
+library(stringr)
 
 supp_fws_up <- readr::read_tsv("render_inputs/shared/supp_fws_up.tsv", col_names = TRUE)
+
+# checking for the k13 extracted from vcf file 
+library(dplyr)
+
+k13_622_vcf <- read.csv(
+  "/mnt/storage13/ahri/popgen_ethiopia_WGS/all_country_merged/WGS_Pf_Ethiopia_2024/whole_genome_scripts/genotype_extraction/WGS_drug_resistance_extraction/output/k13_genotype_result/extracting_vcf/target_wide_format_k13_622.csv"
+) 
+
+
+
+vcf_clean <- k13_622_vcf %>%
+  transmute(
+    sample,
+    `622I_vcf` = str_remove_all(
+      as.character(Pf3D7_13_v3.1725133_C.A),
+      "b'|\""
+    )
+  ) %>%
+  mutate(
+    `622I_vcf` = ifelse(
+      `622I_vcf` %in% c("0/1'", "./.'"),
+      NA_character_,
+      `622I_vcf`
+    ),
+    Kelch13_622_genotype = case_when(
+      `622I_vcf` == "0/0'" ~ "R622",
+      `622I_vcf` == "1/1'" ~ "R622I",
+      TRUE ~ NA_character_
+    )
+  ) |> 
+    select(-"622I_vcf")
+
 
 # Load combined metadata and join with SeekDeep genotypes
 eth_eri_metadata <- supp_fws_up %>%
@@ -532,9 +574,10 @@ eth_eri_metadata <- supp_fws_up %>%
   left_join(kelch13_mutant_only, by = c("sample" = "Sample")) |> 
   left_join(CRT_mutant_only, by = c("sample" = "Sample")) |> 
   left_join(PX1_mutant_only, by = c("sample" = "Sample")) |> 
+  left_join(vcf_clean , by="sample") |> 
   label_ungenotyped()
 kelch_poly_remove <- eth_eri_metadata |> 
-  filter(Kelch13_622 != "R622R/I")
+  mutate(Kelch13_622 = ifelse(Kelch13_622 == "R622R/I", NA, Kelch13_622))
 eth_eri_metadata_poly_remove <- ibd_results(
   blocks          = file.path("render_inputs/ethiopia_eritrea/eth_eri_hmm.hmm.txt"),
   pair_fraction   = file.path("render_inputs/ethiopia_eritrea/eth_eri_ibd_fraction.pair_ibd_fraction.tsv.gz"),
@@ -554,6 +597,17 @@ if ("Kelch13_622" %in% colnames(kelch_poly_remove)) {
   save_plot("ibd_specific_regions/figures_ethiopia_eritrea/Eth_Eri_pfkelch13_poly_removed_ibd_plot.pdf", Eth_Eri_kelch_plot_poly_remove)
 }
 
+if ("Kelch13_622_genotype" %in% colnames(kelch_poly_remove)) {
+  Eth_Eri_kelch_plot_poly_remove_vcf <- eth_eri_metadata_poly_remove$plot_ibd_network(
+    gene = "pfkelch13", 
+    sharing = "complete", 
+    shape_group = "Country",
+    color_group = "Kelch13_622_genotype",
+    include_isolated = TRUE,
+    spread = 2
+  )
+  save_plot("ibd_specific_regions/figures_ethiopia_eritrea/Eth_Eri_pfkelch13_poly_removed_ibd_plot_vcf.pdf", Eth_Eri_kelch_plot_poly_remove_vcf)
+}
 
 # Instantiate IBD Results for Eth/Eri merged dataset
 Eth_Eri_ibd_results <- ibd_results(
@@ -616,7 +670,7 @@ if ("k13_mutation_hap" %in% colnames(eth_eri_metadata)) {
     include_isolated = TRUE,
     spread = 2
   )
-  save_plot("ibd_specific_regions/figures_ethiopia_eritrea/Eth_Eri_pfkelch13_hap_k13_ibd_plot.pdf", Eth_Eri_pfkelch13_hap_country_plot)
+  save_plot("ibd_specific_regions/figures_ethiopia_eritrea/Eth_Eri_pfkelch13_hap_k13_ibd_plot_updated.pdf", Eth_Eri_pfkelch13_hap_country_plot)
 }
 
 # pfcrt network colored by the CRT mutation haplotype
